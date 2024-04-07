@@ -14,3 +14,8 @@ node_modules
 # solidity-coverage files
 /coverage
 /coverage.json
+
+
+/blood-donation-fund-client/node_modules
+/blood-donation-fund-client/.next
+
