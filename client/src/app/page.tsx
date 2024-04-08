@@ -6,8 +6,9 @@ const CONTRACT_ADDRESS = "0xc2310811D515144585b7a7B92F05084f72Df9C78";
 const CONTRACT_ABI: ethers.Interface | ethers.InterfaceAbi = []; // Your contract's ABI
 
 function DonatePage() {
-  // const [provider, setProvider] = useState(undefined);
-  const { ethereum }: any = window;
+  const [provider, setProvider] = useState<any>();
+
+  const { ethereum }: any = typeof window !== "undefined" ? window : {};
   const { providers, utils }: any = ethers;
 
   useEffect(() => {
@@ -19,12 +20,12 @@ function DonatePage() {
   }, [ethereum]);
 
   async function donate(amount: any) {
-    const provider = new providers.Web3Provider(ethereum);
+    const web3Provider = new ethers.BrowserProvider(ethereum);
 
-    if (!provider) {
+    if (!web3Provider) {
       return;
     }
-    const signer = provider.getSigner();
+    const signer = await web3Provider.getSigner();
     const contract = new ethers.Contract(
       CONTRACT_ADDRESS,
       CONTRACT_ABI,
