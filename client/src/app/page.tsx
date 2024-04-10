@@ -38,8 +38,19 @@ function DonatePage() {
   }
 
   return (
-    <div>
-      <button onClick={() => donate("0.1")}>Donate 0.1 Ether</button>
+    <div className="h-screen w-screen flex flex-col bg-zinc-700 ">
+      <div className="flex justify-end m-8">
+        <button>Connect</button>
+      </div>
+      <div className="h-[80%] flex flex-col justify-center items-center">
+        <input
+          type="text"
+          className="w-[20%] bg-emerald-800 border-green-400 border-2 p-2 rounded-2xl"
+        />
+        <button className="mt-4" onClick={() => donate("0.1")}>
+          Donate
+        </button>
+      </div>
     </div>
   );
 }
