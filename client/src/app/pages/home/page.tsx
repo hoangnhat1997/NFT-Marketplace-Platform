@@ -52,21 +52,29 @@ const Home = () => {
     // await transaction.wait();
   }
   return (
-    <div className="h-screen w-screen flex flex-col bg-zinc-700 ">
-      <div className="flex  justify-end m-8">
-        <div className="flex flex-row  hover:bg-blue-400 hover:text-blue-900  justify-center items-center px-2 rounded-2xl border-blue-200 border-2 mr-4">
-          <FontAwesomeIcon icon={faWallet} />
+    <div className="h-screen w-screen flex flex-col bg-white">
+      <div className="flex  justify-center m-8 items-center">
+        <div className="flex flex-row justify-between text-black">
+          <p>Meta Market</p>
+          <p>Explore</p>
+          <p>Discover</p>
+          <p>Categories</p>
+        </div>
+        <div className="flex flex-row bg-[#F8FAFE] hover:bg-blue-400 hover:text-blue-900  justify-center items-center px-2 rounded-2xl mr-4">
+          <FontAwesomeIcon color="black" icon={faWallet} />
           <button
             onClick={() => connect()}
-            className=" py-2 px-4 transition duration-200 ease-in-out transform hover:scale"
+            className="py-2 px-4 transition duration-200 ease-in-out transform hover:scale text-black font-weight-700"
           >
             Wallet
           </button>
         </div>
-
-        <div className="flex flex-row justify-center items-center rounded-2xl border-blue-200 border-2 px-2">
-          <FontAwesomeIcon icon={faUserTie} />
-          <p className="ml-2">Alexander</p>
+        <div className=" w-1 h-6 bg-[#F8FAFE] rounded-xl"></div>
+        <div className="flex flex-row justify-center items-center px-2">
+          <div className="h-12 w-12  flex justify-center items-center p-2">
+            <FontAwesomeIcon color="black" icon={faUserTie} />
+          </div>
+          <p className="ml-2 text-black font-weight-700">Alexander</p>
         </div>
       </div>
       <div className="h-[80%] flex flex-col justify-center items-center">
