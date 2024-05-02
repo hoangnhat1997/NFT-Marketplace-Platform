@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
+
 import {
   faUserTie,
   faWallet,
@@ -95,7 +97,7 @@ const Home = () => {
         </div>
       </div>
       <div className="flex flex-row mx-40">
-        <div className="flex flex-col">
+        <div className="flex flex-col w-1/3">
           <p className="p-2 text-black font-weight-700 bg-[#F8FAFE] rounded-2xl">
             METAMARKET
           </p>
@@ -103,6 +105,16 @@ const Home = () => {
             DISCOVER, COLLECT, AND SELL NFTS
           </p>
           <div className="h-[300px] w-1/4 bg-white"></div>
+        </div>
+        <div className="w-2/3">
+          <Image
+            src={
+              "https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2021/10/image2-2.png"
+            }
+            width={500}
+            height={500}
+            alt="Picture"
+          />
         </div>
       </div>
       {/* <div className="h-[80%] flex flex-col justify-center items-center">
