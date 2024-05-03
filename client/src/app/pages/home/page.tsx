@@ -97,16 +97,23 @@ const Home = () => {
         </div>
       </div>
       <div className="flex flex-row mx-40">
-        <div className="flex flex-col w-1/3">
-          <p className="p-2 text-black font-weight-700 bg-[#F8FAFE] rounded-2xl">
-            METAMARKET
-          </p>
+        <div className="flex flex-col items-start w-2/5">
+          <div className="mb-4 bg-[#F8FAFE] rounded-2xl">
+            <p className="p-2 text-black font-weight-700 ">METAMARKET</p>
+          </div>
           <p className="text-4xl text-black font-bold">
             DISCOVER, COLLECT, AND SELL NFTS
           </p>
-          <div className="h-[300px] w-1/4 bg-white"></div>
+          <div className="mt-10 h-[100px] w-[400px] bg-blue-100 rounded-xl p-6">
+            <p className="font-bold">
+              <span className="text-gray-500">0</span>
+              <span className="text-rose-300">65, 234, 1</span>
+              <span className="text-orange-500">99</span>
+            </p>
+            <p className="mt-2 text-gray-400">You can find over</p>
+          </div>
         </div>
-        <div className="w-2/3">
+        <div className="ml-20 w-3/5">
           <Image
             src={
               "https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2021/10/image2-2.png"
