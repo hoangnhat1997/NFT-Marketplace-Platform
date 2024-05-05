@@ -9,6 +9,8 @@ import {
   faWallet,
   faHouse,
   faMagnifyingGlass,
+  faAngleRight,
+  faAngleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
 const CONTRACT_ADDRESS = "0xc2310811D515144585b7a7B92F05084f72Df9C78";
@@ -97,11 +99,11 @@ const Home = () => {
         </div>
       </div>
       <div className="flex flex-row mx-40">
-        <div className="flex flex-col items-start w-2/5">
+        <div className="flex flex-col items-start w-1/2">
           <div className="mb-4 bg-[#F8FAFE] rounded-2xl">
             <p className="p-2 text-black font-weight-700 ">METAMARKET</p>
           </div>
-          <p className="text-4xl text-black font-bold">
+          <p className="text-5xl text-black font-bold">
             DISCOVER, COLLECT, AND SELL NFTS
           </p>
           <div className="mt-10 h-[100px] w-[400px] bg-blue-100 rounded-xl p-6">
@@ -113,7 +115,7 @@ const Home = () => {
             <p className="mt-2 text-gray-400">You can find over</p>
           </div>
         </div>
-        <div className="ml-20 w-3/5">
+        <div className="ml-10 w-1/2 flex flex-row">
           <Image
             src={
               "https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2021/10/image2-2.png"
@@ -122,6 +124,11 @@ const Home = () => {
             height={500}
             alt="Picture"
           />
+          <div className="ml-4 flex flex-col">
+            <FontAwesomeIcon fontSize={20} color="black" icon={faAngleRight} />
+
+            <FontAwesomeIcon fontSize={20} color="black" icon={faAngleLeft} />
+          </div>
         </div>
       </div>
       {/* <div className="h-[80%] flex flex-col justify-center items-center">
