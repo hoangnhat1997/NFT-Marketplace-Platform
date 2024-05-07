@@ -12,6 +12,7 @@ import {
   faAngleRight,
   faAngleLeft,
 } from "@fortawesome/free-solid-svg-icons";
+import CategoryItem from "@/app/components/categoryItem";
 
 const CONTRACT_ADDRESS = "0xc2310811D515144585b7a7B92F05084f72Df9C78";
 const CONTRACT_ABI: ethers.Interface | ethers.InterfaceAbi = []; // Your contract's ABI
@@ -68,11 +69,11 @@ const Home = () => {
             <FontAwesomeIcon color="black" icon={faHouse} />
             <p className="ml-2">Meta Market</p>
           </div>
-          <div className=" w-1 mx-4 h-6 bg-[#F8FAFE] rounded-xl"></div>
+          <div className=" w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
           <p className="mx-4">Explore</p>
           <p className="mx-4">Discover</p>
           <p className="mx-4">Categories</p>
-          <div className=" w-1 mx-4 h-6 bg-[#F8FAFE] rounded-xl"></div>
+          <div className=" w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
           <FontAwesomeIcon
             className="mx-4"
             color="black"
@@ -80,7 +81,7 @@ const Home = () => {
           />
         </div>
         <div className="flex flex-row justify-center items-center">
-          <div className="flex flex-row bg-[#F8FAFE] hover:bg-blue-400 hover:text-blue-900  justify-center items-center px-2 rounded-2xl mr-4">
+          <div className="flex flex-row bg-gray-200 hover:bg-blue-400 hover:text-blue-900  justify-center items-center px-2 rounded-2xl mr-4">
             <FontAwesomeIcon color="black" icon={faWallet} />
             <button
               onClick={() => connect()}
@@ -89,7 +90,7 @@ const Home = () => {
               Wallet
             </button>
           </div>
-          <div className=" w-1 h-6 bg-[#F8FAFE] rounded-xl"></div>
+          <div className=" w-1 h-6 bg-gray-200 rounded-xl"></div>
           <div className="flex flex-row justify-center items-center px-2">
             <div className="h-12 w-12  flex justify-center items-center p-2">
               <FontAwesomeIcon color="black" icon={faUserTie} />
@@ -98,9 +99,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row mx-40">
+      <div className="flex flex-row mx-40 mt-10">
         <div className="flex flex-col items-start w-1/2">
-          <div className="mb-4 bg-[#F8FAFE] rounded-2xl">
+          <div className="mb-4 bg-gray-200 rounded-2xl">
             <p className="p-2 text-black font-weight-700 ">METAMARKET</p>
           </div>
           <p className="text-5xl text-black font-bold">
@@ -124,12 +125,30 @@ const Home = () => {
             height={500}
             alt="Picture"
           />
-          <div className="ml-4 flex flex-col">
+          <div className="ml-4 flex flex-col justify-between">
             <FontAwesomeIcon fontSize={20} color="black" icon={faAngleRight} />
-
+            <div>
+              <p className="font-bold">
+                <span className="text-gray-800">2 </span>
+                <span className="text-gray-200">OF 4</span>
+              </p>
+            </div>
             <FontAwesomeIcon fontSize={20} color="black" icon={faAngleLeft} />
           </div>
         </div>
+      </div>
+      <div className="mx-40 mt-20 flex flex-row items-center">
+        <p className="font-bold text-black text-3xl">Categories</p>
+        <div className=" w-1 mx-10 h-6 bg-gray-200 rounded-xl"></div>
+        <p className="font-bold text-gray-400 text-xl">
+          Select your favourites
+        </p>
+      </div>
+      <div className="mx-40 mt-10 grid grid-cols-4 gap-10">
+        <CategoryItem />
+        <CategoryItem />
+        <CategoryItem />
+        <CategoryItem />
       </div>
       {/* <div className="h-[80%] flex flex-col justify-center items-center">
         <div className="w-1/4 flex flex-col justify-center border rounded-xl px-4 py-8">
