@@ -1,3 +1,4 @@
+"use client";
 import {
   faUserTie,
   faWallet,
@@ -30,7 +31,7 @@ const Header = () => {
     );
   }
   return (
-    <div className="flex justify-between mx-40 mt-8 items-center">
+    <div className="px-40 py-8 bg-gray-100 flex justify-between items-center">
       <div className="flex flex-row justify-between items-center text-black">
         <div className="flex flex-row justify-center items-center">
           <FontAwesomeIcon color="black" icon={faHouse} />

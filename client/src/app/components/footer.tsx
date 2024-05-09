@@ -1,3 +1,4 @@
+"use client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserTie,
@@ -10,7 +11,7 @@ import {
 
 const Footer = () => {
   return (
-    <div className="px-40 bg-white flex flex-row justify-between items-center py-6 mt-8">
+    <div className="px-40 py-8 bg-gray-100 flex flex-row justify-between items-center py-6">
       <div className="flex flex-row">
         <p className="font-bold text-black">Lets find what you need</p>
         <div className=" w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>

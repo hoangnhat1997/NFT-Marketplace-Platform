@@ -51,7 +51,6 @@ const Home = () => {
   }
   return (
     <div className="h-max w-screen flex flex-col bg-gray-100">
-      <Header />
       <div className="flex flex-row mx-40 mt-10">
         <div className="flex flex-col items-start w-1/2">
           <div className="mb-4 bg-gray-200 rounded-2xl">
@@ -119,7 +118,6 @@ const Home = () => {
           Donate
         </button>
       </div> */}
-      <Footer />
     </div>
   );
 };
