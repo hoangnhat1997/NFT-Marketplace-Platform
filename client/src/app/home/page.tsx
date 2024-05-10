@@ -12,9 +12,9 @@ import {
   faAngleRight,
   faAngleLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import CategoryItem from "@/app/components/categoryItem";
-import Header from "@/app/components/header";
-import Footer from "@/app/components/footer";
+import CategoryItem from "@/components/categoryItem";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const CONTRACT_ADDRESS = "0xc2310811D515144585b7a7B92F05084f72Df9C78";
 const CONTRACT_ABI: ethers.Interface | ethers.InterfaceAbi = []; // Your contract's ABI
