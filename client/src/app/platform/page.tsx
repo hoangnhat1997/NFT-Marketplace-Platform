@@ -1,3 +1,4 @@
+import FlatformItem from "@/components/platformItem";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -13,7 +14,7 @@ const Flatform = () => {
       <div className="my-4 flex bg-gray-200 rounded-2xl justify-center items-center">
         <p className="p-2 text-black font-weight-700">17 NFT Platforms</p>
       </div>
-      <div className="w-[800px] flex flex-row items-center justify-center bg-gray-200 rounded-full text-gray-600 focus-within:text-gray-400">
+      <div className="w-[900px] flex flex-row items-center justify-center bg-gray-200 rounded-full text-gray-600 focus-within:text-gray-400">
         <FontAwesomeIcon
           className="ml-20"
           color="black"
@@ -24,6 +25,9 @@ const Flatform = () => {
           type="text"
           placeholder="Search Platform"
         />
+      </div>
+      <div className="mt-8">
+        <FlatformItem />
       </div>
     </div>
   );
