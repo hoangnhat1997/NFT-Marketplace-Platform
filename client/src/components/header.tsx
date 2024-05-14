@@ -35,7 +35,7 @@ const Header = () => {
       <div className="flex flex-row justify-between items-center text-black">
         <div className="flex flex-row justify-center items-center">
           <FontAwesomeIcon color="black" icon={faHouse} />
-          <p className="ml-2">Meta Market</p>
+          <p className="mr-4">Meta Market</p>
         </div>
         <div className=" w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
         <p className="mx-4">Explore</p>

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const FlatformItem = () => {
   return (
-    <div className="flex flex-col justify-between items-center p-8 rounded-xl bg-white">
+    <div className="flex flex-col justify-between items-center p-12 rounded-xl bg-white">
       <Image
         className="rounded-xl"
         src={
@@ -12,7 +12,7 @@ const FlatformItem = () => {
         height={70}
         alt="Category"
       />
-      <p className="text-black font-medium">Foundation</p>
+      <p className="mt-8 text-black text-xl font-medium">Foundation</p>
     </div>
   );
 };

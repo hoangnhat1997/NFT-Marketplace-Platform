@@ -26,7 +26,14 @@ const Flatform = () => {
           placeholder="Search Platform"
         />
       </div>
-      <div className="mt-8">
+      <div className="mt-8 grid grid-cols-4 gap-4">
+        <FlatformItem />
+        <FlatformItem />
+        <FlatformItem />
+        <FlatformItem />
+        <FlatformItem />
+        <FlatformItem />
+        <FlatformItem />
         <FlatformItem />
       </div>
     </div>
