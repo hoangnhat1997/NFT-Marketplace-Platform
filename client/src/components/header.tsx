@@ -35,7 +35,7 @@ const Header = () => {
       <div className="flex flex-row justify-between items-center text-black">
         <div className="flex flex-row justify-center items-center">
           <FontAwesomeIcon color="black" icon={faHouse} />
-          <p className="mr-4">Meta Market</p>
+          <p className="mr-4 ml-4">Meta Market</p>
         </div>
         <div className=" w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
         <p className="mx-4">Explore</p>
@@ -52,18 +52,21 @@ const Header = () => {
         <div className="flex flex-row bg-gray-200 hover:bg-blue-400 hover:text-blue-900  justify-center items-center px-2 rounded-2xl mr-4">
           <FontAwesomeIcon color="black" icon={faWallet} />
           <button
-            onClick={() => connect()}
+            onClick={() => {}}
             className="py-2 px-4 transition duration-200 ease-in-out transform hover:scale text-black font-weight-700"
           >
             Wallet
           </button>
         </div>
         <div className=" w-1 h-6 bg-gray-200 rounded-xl"></div>
-        <div className="flex flex-row justify-center items-center px-2">
+        {/* <div className="flex flex-row justify-center items-center px-2">
           <div className="h-12 w-12  flex justify-center items-center p-2">
             <FontAwesomeIcon color="black" icon={faUserTie} />
           </div>
           <p className="ml-2 text-black font-weight-700">Alexander</p>
+        </div> */}
+        <div className="ml-4 h-10 px-4 bg-blue-400 hover:bg-blue-700 rounded-3xl flex justify-center items-center">
+          <button onClick={() => connect()}>Connect</button>
         </div>
       </div>
     </div>

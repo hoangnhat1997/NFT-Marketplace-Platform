@@ -22,12 +22,12 @@ const Footer = () => {
           <span className="text-rose-400">01</span>
           <span className="ml-2 text-black">Category </span>
         </p>
-        <div className="hover w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
+        <div className="w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
         <p className="font-bold">
           <span className="text-rose-400">02</span>
           <span className="ml-2 text-black">Platforms </span>
         </p>
-        <div className=" w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
+        <div className="w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
         <p className="font-bold">
           <span className="text-rose-400">02</span>
           <span className="ml-2 text-black">Browse </span>
