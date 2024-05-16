@@ -12,10 +12,21 @@ import { ethers } from "ethers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import exp from "constants";
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from "../utils/address";
+import { useState } from "react";
+import ConnectModal from "./connectModal";
 
 const Header = () => {
   const { ethereum }: any = typeof window !== "undefined" ? window : {};
   const { providers, utils }: any = ethers;
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
 
   async function connect() {
     const web3Provider = new ethers.BrowserProvider(ethereum);
@@ -65,9 +76,15 @@ const Header = () => {
           </div>
           <p className="ml-2 text-black font-weight-700">Alexander</p>
         </div> */}
-        <div className="ml-4 h-10 px-4 bg-blue-400 hover:bg-blue-700 rounded-3xl flex justify-center items-center">
-          <button onClick={() => connect()}>Connect</button>
-        </div>
+
+        <button
+          className="ml-4 h-10 px-4 bg-blue-600 hover:bg-blue-400 rounded-3xl flex justify-center items-center"
+          onClick={() => openModal()}
+        >
+          Connect Wallet
+        </button>
+
+        {isOpen && <ConnectModal closeModal={closeModal} />}
       </div>
     </div>
   );
