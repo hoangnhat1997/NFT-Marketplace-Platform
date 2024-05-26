@@ -31,3 +31,20 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Custom animation classes */
+.slide-down-enter {
+  @apply opacity-0 transform -translate-y-full;
+}
+
+.slide-down-enter-active {
+  @apply opacity-100 transform translate-y-0 transition duration-300;
+}
+
+.slide-down-exit {
+  @apply opacity-100 transform translate-y-0;
+}
+
+.slide-down-exit-active {
+  @apply opacity-0 transform -translate-y-full transition duration-300;
+}
