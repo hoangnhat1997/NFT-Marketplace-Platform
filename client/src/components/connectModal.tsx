@@ -20,21 +20,27 @@ const ConnectModal = (props: ConnectModalProps) => {
         onClick={() => alert("Connecting to Metamask...")}
         className="mb-2 px-4 py-2 text-white bg-blue-500 rounded w-full"
       >
-        MetaMask
+        <div>
+          <p> MetaMask</p>
+        </div>
       </button>
 
       <button
         onClick={() => alert("Connecting to Coinbase...")}
         className="mb-2 px-4 py-2 text-white bg-blue-500 rounded w-full"
       >
-        Coinbase
+        <div>
+          <p>Coinbase</p>
+        </div>
       </button>
 
       <button
         onClick={() => alert("Connecting to other wallet...")}
         className="mb-2 px-4 py-2 text-white bg-blue-500 rounded w-full"
       >
-        Connect Wallet
+        <div>
+          <p>Connect Wallet</p>
+        </div>
       </button>
 
       <button
