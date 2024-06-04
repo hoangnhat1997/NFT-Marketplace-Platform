@@ -41,9 +41,10 @@ const ConnectModal = (props: ConnectModalProps) => {
         <span className="text-gray-500"> and our </span>
         <span className="text-black"> Privacy Policy </span>
       </p>
-      <div className="mb-2 px-4 py-2 text-white bg-blue-500 rounded w-full bg-white">
-        <div className="flex flex-row items-center justify-between">
+      <div className="mb-2 py-2 text-white bg-blue-500 rounded w-full bg-white">
+        <div className="flex flex-row items-center justify-between group">
           <div className="flex flex-row items-center">
+            <div className=" w-1 mr-2 h-6 group-hover:bg-blue-500 rounded-xl"></div>
             <Image
               src={"/images/metamask.png"}
               width={40}
@@ -53,14 +54,15 @@ const ConnectModal = (props: ConnectModalProps) => {
             <p className="ml-2 text-black"> MetaMask</p>
           </div>
           <button onClick={() => alert("Connecting to Metamask...")}>
-            <p className="text-blue-500">connect</p>
+            <p className="group-hover:text-blue-500">connect</p>
           </button>
         </div>
       </div>
 
-      <div className="mb-2 px-4 py-2 text-white bg-blue-500 rounded w-full bg-white">
-        <div className="flex flex-row items-center justify-between">
+      <div className="mb-2 py-2 text-white bg-blue-500 rounded w-full bg-white">
+        <div className="flex flex-row items-center justify-between group">
           <div className="flex flex-row items-center">
+            <div className=" w-1 mr-2 h-6 group-hover:bg-blue-500 rounded-xl"></div>
             <Image
               src={"/images/coinbase.png"}
               width={40}
@@ -70,14 +72,15 @@ const ConnectModal = (props: ConnectModalProps) => {
             <p className="ml-2 text-black">Coinbase Wallet</p>
           </div>
           <button onClick={() => alert("Connecting to Coinbase...")}>
-            <p className="text-blue-500">connect</p>
+            <p className="group-hover:text-blue-500">connect</p>
           </button>
         </div>
       </div>
 
-      <div className="mb-2 px-4 py-2 text-white bg-blue-500 rounded w-full bg-white">
-        <div className="flex flex-row items-center justify-between">
+      <div className="mb-2 py-2 text-white bg-blue-500 rounded w-full bg-white">
+        <div className="flex flex-row items-center justify-between group">
           <div className="flex flex-row items-center">
+            <div className=" w-1 mr-2 h-6 group-hover:bg-blue-500 rounded-xl"></div>
             <Image
               src={"/images/connectWallet.png"}
               width={40}
@@ -87,7 +90,7 @@ const ConnectModal = (props: ConnectModalProps) => {
             <p className="ml-2 text-black">WalletConnect</p>
           </div>
           <button onClick={() => alert("Connecting to other wallet...")}>
-            <p className="text-blue-500">connect</p>
+            <p className="group-hover:text-blue-500">connect</p>
           </button>
         </div>
       </div>
