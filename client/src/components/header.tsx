@@ -10,7 +10,6 @@ import {
 import { ethers } from "ethers";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import exp from "constants";
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from "../utils/address";
 import { useState } from "react";
 import ConnectModal from "./connectModal";
@@ -26,6 +25,7 @@ const Header = () => {
 
   const openModal = () => {
     setIsOpen(true);
+    console.log("open modal");
   };
 
   async function connect() {
@@ -46,13 +46,13 @@ const Header = () => {
       <div className="flex flex-row justify-between items-center text-black">
         <div className="flex flex-row justify-center items-center">
           <FontAwesomeIcon color="black" icon={faHouse} />
-          <p className="mr-4 ml-4">Meta Market</p>
+          <p className="mr-0 ml-4">Meta Market</p>
         </div>
         <div className=" w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
         <p className="mx-4">Explore</p>
         <p className="mx-4">Discover</p>
         <p className="mx-4">Categories</p>
-        <div className=" w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
+        <div className="w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
         <FontAwesomeIcon
           className="mx-4"
           color="black"
