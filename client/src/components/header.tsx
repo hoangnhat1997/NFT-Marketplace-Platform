@@ -70,12 +70,12 @@ const Header = () => {
           </button>
         </div>
         <div className=" w-1 h-6 bg-gray-200 rounded-xl"></div>
-        {/* <div className="flex flex-row justify-center items-center px-2">
+        <div className="flex flex-row justify-center items-center px-2">
           <div className="h-12 w-12  flex justify-center items-center p-2">
             <FontAwesomeIcon color="black" icon={faUserTie} />
           </div>
           <p className="ml-2 text-black font-weight-700">Alexander</p>
-        </div> */}
+        </div>
 
         <button
           className="ml-4 h-10 px-4 bg-blue-600 hover:bg-blue-400 rounded-3xl flex justify-center items-center"
