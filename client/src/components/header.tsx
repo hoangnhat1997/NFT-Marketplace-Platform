@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from "../utils/address";
 import { useState } from "react";
 import ConnectModal from "./connectModal";
+import { MetaMaskProvider } from "@metamask/sdk-react";
 
 const Header = () => {
   const { ethereum }: any = typeof window !== "undefined" ? window : {};
@@ -26,6 +27,15 @@ const Header = () => {
   const openModal = () => {
     setIsOpen(true);
     console.log("open modal");
+  };
+
+  const sdkOptions = {
+    logging: { developerMode: false },
+    checkInstallationImmediately: false,
+    dappMetadata: {
+      name: "Meta Market App",
+      url: process.env.NEXT_PUBLIC_URL,
+    },
   };
 
   async function connect() {
@@ -76,13 +86,14 @@ const Header = () => {
           </div>
           <p className="ml-2 text-black font-weight-700">Alexander</p>
         </div>
-
-        <button
-          className="ml-4 h-10 px-4 bg-blue-600 hover:bg-blue-400 rounded-3xl flex justify-center items-center"
-          onClick={() => openModal()}
-        >
-          Connect Wallet
-        </button>
+        <MetaMaskProvider debug={false} sdkOptions={sdkOptions}>
+          <button
+            className="ml-4 h-10 px-4 bg-blue-600 hover:bg-blue-400 rounded-3xl flex justify-center items-center"
+            onClick={openModal}
+          >
+            Connect Wallet
+          </button>
+        </MetaMaskProvider>
 
         {isOpen && <ConnectModal closeModal={closeModal} />}
       </div>

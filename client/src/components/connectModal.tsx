@@ -1,5 +1,6 @@
 "use client";
 
+import { useSDK } from "@metamask/sdk-react";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
@@ -9,6 +10,8 @@ type ConnectModalProps = {
 
 const ConnectModal = (props: ConnectModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
+
+  const { sdk, connected, connecting, account } = useSDK();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -26,6 +29,25 @@ const ConnectModal = (props: ConnectModalProps) => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [props, props.closeModal]);
+
+  const connectMetaMask = async () => {
+    if (!sdk) {
+      console.error("MetaMask SDK not initialized");
+      return;
+    }
+    try {
+      console.log("Attempting to connect to MetaMask...");
+      await sdk.connect();
+    } catch (err) {
+      console.error("Error connecting to MetaMask", err);
+    }
+  };
+
+  const disconnectMetamask = () => {
+    if (sdk) {
+      sdk.terminate();
+    }
+  };
 
   return (
     <div
@@ -53,8 +75,13 @@ const ConnectModal = (props: ConnectModalProps) => {
             />
             <p className="ml-2 text-black"> MetaMask</p>
           </div>
-          <button onClick={() => alert("Connecting to Metamask...")}>
-            <p className="group-hover:text-blue-500">connect</p>
+          <button
+            disabled={connecting}
+            onClick={connected ? disconnectMetamask : connectMetaMask}
+          >
+            <p className="group-hover:text-blue-500">
+              {connected ? "disconnect" : "connect"}
+            </p>
           </button>
         </div>
       </div>
