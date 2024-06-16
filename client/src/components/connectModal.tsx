@@ -1,8 +1,10 @@
 "use client";
 
+import { CONTRACT_ABI } from "@/utils/address";
 import { useSDK } from "@metamask/sdk-react";
+import { ethers } from "ethers";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type ConnectModalProps = {
   closeModal: () => void;
@@ -12,6 +14,37 @@ const ConnectModal = (props: ConnectModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const { sdk, connected, connecting, account } = useSDK();
+
+  const [provider, setProvider] = useState<any>();
+
+  const { ethereum }: any = typeof window !== "undefined" ? window : {};
+  const { providers, utils }: any = ethers;
+
+  useEffect(() => {
+    if (ethereum) {
+      // setProvider(new providers.Web3Provider(window));
+    } else {
+      console.log("Please install MetaMask!");
+    }
+  }, [ethereum]);
+
+  async function connectMetaMask(amount: any) {
+    const web3Provider = new ethers.BrowserProvider(ethereum);
+
+    if (!web3Provider) {
+      return;
+    }
+    const signer = await web3Provider.getSigner();
+    const contract = new ethers.Contract(
+      process.env.CONTRACT_ADDRESS!,
+      CONTRACT_ABI,
+      signer
+    );
+    // const transaction = await contract.donate({
+    //   value: utils.parseEther(amount),
+    // });
+    // await transaction.wait();
+  }
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -30,18 +63,18 @@ const ConnectModal = (props: ConnectModalProps) => {
     };
   }, [props, props.closeModal]);
 
-  const connectMetaMask = async () => {
-    if (!sdk) {
-      console.error("MetaMask SDK not initialized");
-      return;
-    }
-    try {
-      console.log("Attempting to connect to MetaMask...");
-      await sdk.connect();
-    } catch (err) {
-      console.error("Error connecting to MetaMask", err);
-    }
-  };
+  // const connectMetaMask = async () => {
+  //   if (!sdk) {
+  //     console.error("MetaMask SDK not initialized");
+  //     return;
+  //   }
+  //   try {
+  //     console.log("Attempting to connect to MetaMask...");
+  //     await sdk.connect();
+  //   } catch (err) {
+  //     console.error("Error connecting to MetaMask", err);
+  //   }
+  // };
 
   const disconnectMetamask = () => {
     if (sdk) {
@@ -103,7 +136,6 @@ const ConnectModal = (props: ConnectModalProps) => {
           </button>
         </div>
       </div>
-
       <div className="mb-2 py-2 text-white bg-blue-500 rounded w-full bg-white">
         <div className="flex flex-row items-center justify-between group">
           <div className="flex flex-row items-center">

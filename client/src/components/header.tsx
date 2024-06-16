@@ -10,10 +10,9 @@ import {
 import { ethers } from "ethers";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CONTRACT_ABI, CONTRACT_ADDRESS } from "../utils/address";
+import { CONTRACT_ABI } from "../utils/address";
 import { useState } from "react";
 import ConnectModal from "./connectModal";
-import { MetaMaskProvider } from "@metamask/sdk-react";
 
 const Header = () => {
   const { ethereum }: any = typeof window !== "undefined" ? window : {};
@@ -29,15 +28,6 @@ const Header = () => {
     console.log("open modal");
   };
 
-  const sdkOptions = {
-    logging: { developerMode: false },
-    checkInstallationImmediately: false,
-    dappMetadata: {
-      name: "Meta Market App",
-      url: process.env.NEXT_PUBLIC_URL,
-    },
-  };
-
   async function connect() {
     const web3Provider = new ethers.BrowserProvider(ethereum);
 
@@ -46,7 +36,7 @@ const Header = () => {
     }
     const signer = await web3Provider.getSigner();
     const contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
+      process.env.CONTRACT_ADDRESS!,
       CONTRACT_ABI,
       signer
     );
@@ -86,15 +76,12 @@ const Header = () => {
           </div>
           <p className="ml-2 text-black font-weight-700">Alexander</p>
         </div>
-        <MetaMaskProvider debug={false} sdkOptions={sdkOptions}>
-          <button
-            className="ml-4 h-10 px-4 bg-blue-600 hover:bg-blue-400 rounded-3xl flex justify-center items-center"
-            onClick={openModal}
-          >
-            Connect Wallet
-          </button>
-        </MetaMaskProvider>
-
+        <button
+          className="ml-4 h-10 px-4 bg-blue-600 hover:bg-blue-400 rounded-3xl flex justify-center items-center"
+          onClick={openModal}
+        >
+          Connect Wallet
+        </button>
         {isOpen && <ConnectModal closeModal={closeModal} />}
       </div>
     </div>
