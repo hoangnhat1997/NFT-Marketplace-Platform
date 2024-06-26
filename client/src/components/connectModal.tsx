@@ -40,10 +40,10 @@ const ConnectModal = (props: ConnectModalProps) => {
       CONTRACT_ABI,
       signer
     );
-    // const transaction = await contract.donate({
-    //   value: utils.parseEther(amount),
-    // });
-    // await transaction.wait();
+    const transaction = await contract.donate({
+      value: utils.parseEther(amount),
+    });
+    await transaction.wait();
   }
 
   useEffect(() => {
@@ -63,18 +63,18 @@ const ConnectModal = (props: ConnectModalProps) => {
     };
   }, [props, props.closeModal]);
 
-  // const connectMetaMask = async () => {
-  //   if (!sdk) {
-  //     console.error("MetaMask SDK not initialized");
-  //     return;
-  //   }
-  //   try {
-  //     console.log("Attempting to connect to MetaMask...");
-  //     await sdk.connect();
-  //   } catch (err) {
-  //     console.error("Error connecting to MetaMask", err);
-  //   }
-  // };
+  const connectMetaMask = async () => {
+    if (!sdk) {
+      console.error("MetaMask SDK not initialized");
+      return;
+    }
+    try {
+      console.log("Attempting to connect to MetaMask...");
+      await sdk.connect();
+    } catch (err) {
+      console.error("Error connecting to MetaMask", err);
+    }
+  };
 
   const disconnectMetamask = () => {
     if (sdk) {
