@@ -70,7 +70,7 @@ const Home = () => {
         <CategoryItem />
         <CategoryItem />
       </div>
-      {/* <div className="h-[80%] flex flex-col justify-center items-center">
+      <div className="h-[80%] flex flex-col justify-center items-center">
         <div className="w-1/4 flex flex-col justify-center border rounded-xl px-4 py-8">
           <p className="mb-2 flex">Please input your money</p>
           <input
@@ -82,10 +82,10 @@ const Home = () => {
             className="w-full mt-4 bg-emerald-800 border-green-400 border-2 p-2 rounded-2xl"
           />
         </div>
-        <button className="mt-4" onClick={() => donate("0.1")}>
+        {/* <button className="mt-4" onClick={() => donate("0.1")}>
           Donate
-        </button>
-      </div> */}
+        </button> */}
+      </div>
     </div>
   );
 };
