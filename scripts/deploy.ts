@@ -1,13 +1,10 @@
-import { log } from "console";
 import { ethers } from "hardhat";
 
 async function main() {
-  const contractApi = await ethers.getContractFactory("Lock");
+  const contractApi = await ethers.getContractFactory("contractApi");
   const contractApi_ = await contractApi.deploy();
 
-  await contractApi_.deployed();
-
-  console.log("Contract Address: ", contractApi_.address);
+  console.log("Contract Address: ", (contractApi_ as any).address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
