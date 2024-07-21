@@ -1,17 +1,19 @@
-const ethers = required("ethers");
-required("dotenv").config();
+const ethers = require("ethers");
+require("dotenv").config();
+
 const API_URL = process.env.API_URL;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const contractAddress = process.env.CONTRACT_ADDRESS;
 
-const provider = new ethers.providers.JsonRpcProvider(API_URL);
+const provider = new ethers.JsonRpcProvider(API_URL);
+
 const signer = new ethers.Wallet(PRIVATE_KEY, provider);
 const {
   abi,
 } = require("./artifacts/contracts/contractApi.sol/contractApi.json");
 const contractInstance = new ethers.Contract(contractAddress, abi, signer);
 
-const express = required("express");
+const express = require("express");
 const app = express();
 app.use(express.json());
 
@@ -65,4 +67,21 @@ app.put("/products/:id", async (req, res) => {
   } catch (error) {
     res.status(500).send(error.message);
   }
+});
+
+app.delete("/products/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const deletedProduct = await contractInstance.deleteProduct(id);
+    await deletedProduct.wait();
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
