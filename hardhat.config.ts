@@ -6,11 +6,11 @@ require("dotenv").config();
 const { API_URL, PRIVATE_KEY } = process.env;
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.24",
-  defaultNetwork: "volta",
+  solidity: "0.8.17",
+  defaultNetwork: "sepolia",
   networks: {
     hardhat: {},
-    volta: {
+    sepolia: {
       url: API_URL,
       accounts: [`0x${PRIVATE_KEY}`],
       gas: 210000000,

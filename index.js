@@ -14,6 +14,7 @@ const {
 const contractInstance = new ethers.Contract(contractAddress, abi, signer);
 
 const express = require("express");
+const { log } = require("util");
 const app = express();
 app.use(express.json());
 
@@ -30,6 +31,7 @@ app.get("/products/:id", async (req, res) => {
 app.get("/products/", async (req, res) => {
   try {
     const products = await contractInstance.getAllProducts();
+    console.log("ok");
     res.send(products);
   } catch (error) {
     res.status(500).send(error.message);
