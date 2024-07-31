@@ -1,12 +1,13 @@
-import { HardhatUserConfig } from "hardhat/config";
+import { HardhatUserConfig } from "hardhat/types";
 import "@nomicfoundation/hardhat-toolbox";
 import "@nomicfoundation/hardhat-ethers";
+require("@nomiclabs/hardhat-waffle");
+
 require("dotenv").config();
 
 const { API_URL, PRIVATE_KEY } = process.env;
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.17",
   defaultNetwork: "sepolia",
   networks: {
     hardhat: {},
@@ -16,6 +17,24 @@ const config: HardhatUserConfig = {
       gas: 210000000,
       gasPrice: 800000000000,
     },
+  },
+  solidity: {
+    version: "0.8.24",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+    },
+  },
+  paths: {
+    sources: "./contracts",
+    tests: "./test",
+    cache: "./cache",
+    artifacts: "./artifacts",
+  },
+  mocha: {
+    timeout: 40000,
   },
 };
 
