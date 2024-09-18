@@ -13,11 +13,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CONTRACT_ABI } from "../utils/address";
 import { useState } from "react";
 import ConnectModal from "./connectModal";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const { ethereum }: any = typeof window !== "undefined" ? window : {};
   const { providers, utils }: any = ethers;
   const [isOpen, setIsOpen] = useState(false);
+
+  const router = useRouter();
 
   const closeModal = () => {
     setIsOpen(false);
@@ -49,9 +52,24 @@ const Header = () => {
           <p className="mr-0 ml-4">Meta Market</p>
         </div>
         <div className=" w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
-        <p className="mx-4">Explore</p>
-        <p className="mx-4">Discover</p>
-        <p className="mx-4">Categories</p>
+        <p
+          className="mx-4 hover:text-sky-500 cursor-pointer"
+          onClick={() => router.push("/explore")}
+        >
+          Explore
+        </p>
+        <p
+          className="mx-4 hover:text-sky-500 cursor-pointer"
+          onClick={() => router.push("discover")}
+        >
+          Discover
+        </p>
+        <p
+          className="mx-4 hover:text-sky-500 cursor-pointer"
+          onClick={() => router.push("categories")}
+        >
+          Categories
+        </p>
         <div className="w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
         <FontAwesomeIcon
           className="mx-4"

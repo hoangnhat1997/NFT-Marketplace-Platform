@@ -28,7 +28,7 @@ const ConnectModal = (props: ConnectModalProps) => {
     }
   }, [ethereum]);
 
-  async function connectMetaMask(amount: any) {
+  const connectMetaMask = async (amount: any) => {
     const web3Provider = new ethers.BrowserProvider(ethereum);
 
     if (!web3Provider) {
@@ -44,7 +44,7 @@ const ConnectModal = (props: ConnectModalProps) => {
       value: utils.parseEther(amount),
     });
     await transaction.wait();
-  }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
