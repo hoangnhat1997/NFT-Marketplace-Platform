@@ -29,21 +29,35 @@ const ConnectModal = (props: ConnectModalProps) => {
   }, [ethereum]);
 
   const connectMetaMask = async (amount: any) => {
-    const web3Provider = new ethers.BrowserProvider(ethereum);
+    try {
+      if (typeof window.ethereum === "undefined") {
+        console.error("MetaMask is not installed");
+        return;
+      }
 
-    if (!web3Provider) {
-      return;
+      await window.ethereum.request({ method: "eth_requestAccounts" });
+
+      const web3Provider = new ethers.BrowserProvider(window.ethereum);
+
+      const signer = await web3Provider.getSigner();
+
+      const contract = new ethers.Contract(
+        process.env.CONTRACT_ADDRESS!,
+        CONTRACT_ABI,
+        signer
+      );
+
+      const transaction = await contract.donate({
+        value: utils.parseEther(amount),
+      });
+      await transaction.wait();
+      console.log("Transaction successful");
+    } catch (error) {
+      console.error(
+        "Error connecting to MetaMask or executing the transaction",
+        error
+      );
     }
-    const signer = await web3Provider.getSigner();
-    const contract = new ethers.Contract(
-      process.env.CONTRACT_ADDRESS!,
-      CONTRACT_ABI,
-      signer
-    );
-    const transaction = await contract.donate({
-      value: utils.parseEther(amount),
-    });
-    await transaction.wait();
   };
 
   useEffect(() => {
