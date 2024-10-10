@@ -34,11 +34,11 @@ const Footer = () => {
         </p>
       </div>
       <div className="flex flex-row">
-        <div className="hover:bg-gray-400 bg-gray-200 rounded-3xl py-2 px-6 flex flex-row justify-center items-center">
+        <div className="hover:bg-gray-400 bg-gray-200 rounded-3xl py-2 px-6 flex flex-row justify-center items-center cursor-pointer">
           <FontAwesomeIcon fontSize={10} color="black" icon={faAngleLeft} />
-          <p className="ml-2 text-black font-medium">Prev Step</p>
+          <p className="ml-2 text-black font-medium ">Prev Step</p>
         </div>
-        <div className="hover:bg-gray-400 ml-8 bg-gray-200 rounded-3xl py-2 px-6 flex flex-row justify-center items-center">
+        <div className="hover:bg-gray-400 ml-8 bg-gray-200 rounded-3xl py-2 px-6 flex flex-row justify-center items-center cursor-pointer">
           <p className="text-black font-medium">Next Step</p>
           <FontAwesomeIcon
             className="ml-2"
