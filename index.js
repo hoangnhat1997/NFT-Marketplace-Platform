@@ -5,7 +5,7 @@ const API_URL = process.env.API_URL;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const contractAddress = process.env.CONTRACT_ADDRESS;
 
-const provider = new ethers.JsonRpcProvider(API_URL);
+const provider = new ethers.providers.JsonRpcProvider(API_URL);
 
 const signer = new ethers.Wallet(PRIVATE_KEY, provider);
 const {
