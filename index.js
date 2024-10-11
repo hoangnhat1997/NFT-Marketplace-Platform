@@ -14,7 +14,6 @@ const {
 const contractInstance = new ethers.Contract(contractAddress, abi, signer);
 
 const express = require("express");
-const { log } = require("util");
 const app = express();
 app.use(express.json());
 
