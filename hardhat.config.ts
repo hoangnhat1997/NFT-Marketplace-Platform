@@ -6,6 +6,9 @@ require("dotenv").config();
 
 const { API_URL, PRIVATE_KEY } = process.env;
 
+console.log("API_URL", API_URL);
+console.log("PRIVATE_KEY", PRIVATE_KEY);
+
 const config: HardhatUserConfig = {
   defaultNetwork: "sepolia",
   networks: {
