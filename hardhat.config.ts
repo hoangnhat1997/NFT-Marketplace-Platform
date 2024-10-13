@@ -16,8 +16,8 @@ const config: HardhatUserConfig = {
     sepolia: {
       url: API_URL,
       accounts: [`0x${PRIVATE_KEY}`],
-      gas: 210000000,
-      gasPrice: 800000000000,
+      gas: 2100000,
+      gasPrice: 8000000000, // Adjust if needed
     },
   },
   solidity: {
