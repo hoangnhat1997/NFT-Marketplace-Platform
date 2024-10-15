@@ -4,20 +4,15 @@ require("@nomicfoundation/hardhat-toolbox");
 
 require("dotenv").config();
 
-const { API_URL, PRIVATE_KEY } = process.env;
-
-console.log("API_URL", API_URL);
-console.log("PRIVATE_KEY", PRIVATE_KEY);
-
 const config: HardhatUserConfig = {
   defaultNetwork: "sepolia",
   networks: {
     hardhat: {},
     sepolia: {
-      url: API_URL,
-      accounts: [`0x${PRIVATE_KEY}`],
+      url: process.env.API_URL,
+      accounts: [`0x${process.env.PRIVATE_KEY}`],
       gas: 2100000,
-      gasPrice: 8000000000, // Adjust if needed
+      gasPrice: 8000000000,
     },
   },
   solidity: {
