@@ -5,7 +5,7 @@ const API_URL = process.env.API_URL;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const contractAddress = process.env.CONTRACT_ADDRESS;
 
-const provider = new ethers.providers.JsonRpcProvider(API_URL);
+const provider = new ethers.JsonRpcProvider(API_URL);
 
 const signer = new ethers.Wallet(PRIVATE_KEY, provider);
 const {
@@ -21,6 +21,8 @@ app.get("/products/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const product = await contractInstance.getProduct(id);
+    let prod = [];
+    prod[0] = product[0];
     res.send(product);
   } catch (error) {
     res.status(500).send(error.message);
@@ -40,13 +42,15 @@ app.get("/products/", async (req, res) => {
 app.post("/products", async (req, res) => {
   try {
     const { id, name, price, quantity } = req.body;
+
     const newProduct = await contractInstance.setProduct(
       id,
       name,
       price,
       quantity
     );
-    await newProduct.wait();
+
+    await newProduct.wait(0);
     res.json({ success: true });
   } catch (error) {
     res.status(500).send(error.message);

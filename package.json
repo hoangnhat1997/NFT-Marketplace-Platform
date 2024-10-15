@@ -15,7 +15,7 @@
     "dotenv": "^16.4.5",
     "ethers": "^6.13.4",
     "express": "^4.17.1",
-    "hardhat": "^2.22.7"
+    "hardhat": "^2.22.13"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.8",
