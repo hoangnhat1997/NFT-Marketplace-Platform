@@ -23,6 +23,7 @@ app.get("/products/:id", async (req, res) => {
     const [names, prices, quantities] = await contractInstance.getProduct(id);
 
     const product = {
+      id: id,
       name: names,
       price: prices.toString(),
       quantity: quantities.toString(),
