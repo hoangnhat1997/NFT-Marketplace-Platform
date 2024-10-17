@@ -20,10 +20,17 @@ app.use(express.json());
 app.get("/products/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const product = await contractInstance.getProduct(id);
-    let prod = [];
-    prod[0] = product[0];
-    res.send(product);
+    const [names, prices, quantities] = await contractInstance.getProduct(id);
+
+    const product = {
+      name: names,
+      price: prices.toString(),
+      quantity: quantities.toString(),
+    };
+    res.status(200).json({
+      success: true,
+      data: product,
+    });
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -31,9 +38,19 @@ app.get("/products/:id", async (req, res) => {
 
 app.get("/products/", async (req, res) => {
   try {
-    const products = await contractInstance.getAllProducts();
-    console.log("ok");
-    res.send(products);
+    const [ids, names, prices, quantities] =
+      await contractInstance.getAllProducts();
+    const products = ids.map((id, index) => ({
+      id: id.toString(),
+      name: names[index],
+      price: prices[index].toString(),
+      quantity: quantities[index].toString(),
+    }));
+
+    res.status(200).json({
+      success: true,
+      data: products,
+    });
   } catch (error) {
     res.status(500).send(error.message);
   }
