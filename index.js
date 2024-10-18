@@ -68,7 +68,7 @@ app.post("/products", async (req, res) => {
       quantity
     );
 
-    await newProduct.wait(0);
+    await newProduct.wait();
     res.json({ success: true });
   } catch (error) {
     res.status(500).send(error.message);
