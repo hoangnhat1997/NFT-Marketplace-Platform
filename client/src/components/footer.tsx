@@ -8,8 +8,11 @@ import {
   faAngleRight,
   faAngleLeft,
 } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/navigation";
 
 const Footer = () => {
+  const router = useRouter();
+
   return (
     <div className="px-40 py-8 bg-gray-100 flex flex-row justify-between items-center py-6">
       <div className="flex flex-row">
@@ -18,12 +21,18 @@ const Footer = () => {
         <p className="text-blue-400">How it works?</p>
       </div>
       <div className="flex flex-row">
-        <p className="ml-8 font-bold hover:text-sky-500 cursor-pointer">
+        <p
+          className="ml-8 font-bold hover:text-sky-500 cursor-pointer"
+          onClick={() => router.push("categories")}
+        >
           <span className="text-rose-400">01</span>
           <span className="ml-2 text-black">Category </span>
         </p>
         <div className="w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
-        <p className="font-bold hover:text-sky-500 cursor-pointer">
+        <p
+          className="font-bold hover:text-sky-500 cursor-pointer"
+          onClick={() => router.push("platform")}
+        >
           <span className="text-rose-400">02</span>
           <span className="ml-2 text-black">Platforms </span>
         </p>
