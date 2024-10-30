@@ -26,7 +26,7 @@ const Footer = () => {
           onClick={() => router.push("categories")}
         >
           <span className="text-rose-400">01</span>
-          <span className="ml-2 text-black">Category </span>
+          <span className="ml-2 text-black">Category</span>
         </p>
         <div className="w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
         <p
@@ -34,12 +34,12 @@ const Footer = () => {
           onClick={() => router.push("platform")}
         >
           <span className="text-rose-400">02</span>
-          <span className="ml-2 text-black">Platforms </span>
+          <span className="ml-2 text-black">Platforms</span>
         </p>
         <div className="w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
         <p className="font-bold hover:text-sky-500 cursor-pointer">
           <span className="text-rose-400">03</span>
-          <span className="ml-2 text-black">Browse </span>
+          <span className="ml-2 text-black">Browse</span>
         </p>
       </div>
       <div className="flex flex-row">

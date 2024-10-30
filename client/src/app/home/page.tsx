@@ -18,16 +18,16 @@ import Footer from "@/components/footer";
 
 const Home = () => {
   return (
-    <div className="h-max w-screen flex flex-col bg-gray-100">
-      <div className="flex flex-row mx-40 mt-10">
-        <div className="flex flex-col items-start w-1/2">
-          <div className="mb-4 bg-gray-200 rounded-2xl">
-            <p className="p-2 text-black font-weight-700 ">METAMARKET</p>
+    <div className="h-max w-full flex flex-col bg-gray-100 px-4 md:px-20">
+      <div className="flex flex-col md:flex-row items-center md:items-start mx-auto mt-10 md:mx-20">
+        <div className="flex flex-col items-center md:items-start w-full md:w-1/2">
+          <div className="mb-4 bg-gray-200 rounded-2xl text-center md:text-left">
+            <p className="p-2 text-black font-semibold">METAMARKET</p>
           </div>
-          <p className="text-5xl text-black font-bold">
+          <p className="text-3xl md:text-5xl text-black font-bold text-center md:text-left">
             DISCOVER, COLLECT, AND SELL NFTS
           </p>
-          <div className="mt-10 h-[100px] w-[400px] bg-white rounded-xl p-6">
+          <div className="mt-10 h-[100px] w-full md:w-[400px] bg-white rounded-xl p-6">
             <p className="font-bold">
               <span className="text-gray-500">0</span>
               <span className="text-rose-400">65, 234, 1</span>
@@ -36,7 +36,7 @@ const Home = () => {
             <p className="mt-2 text-gray-400">You can find over</p>
           </div>
         </div>
-        <div className="ml-10 w-1/2 flex flex-row">
+        <div className=" md:w-1/2 flex ">
           <Image
             src={
               "https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2021/10/image2-2.png"
@@ -57,35 +57,19 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="mx-40 mt-20 flex flex-row items-center">
-        <p className="font-bold text-black text-3xl">Categories</p>
-        <div className=" w-1 mx-10 h-6 bg-gray-200 rounded-xl"></div>
-        <p className="font-medium text-gray-400 text-xl">
+      <div className="md:mx-20 mt-20 flex flex-col md:flex-row items-center md:items-start text-center md:text-left">
+        <p className="font-bold text-black text-2xl md:text-3xl">Categories</p>
+        <div className="hidden md:block w-1 mx-10 h-6 bg-gray-200 rounded-xl"></div>
+        <p className="font-medium text-gray-400 text-lg md:text-xl">
           Select your favourites
         </p>
       </div>
-      <div className="mx-40 mt-10 grid grid-cols-4 gap-10">
+      <div className="md:mx-20 mt-10 grid grid-cols-2 md:grid-cols-4 md:gap-6">
         <CategoryItem />
         <CategoryItem />
         <CategoryItem />
         <CategoryItem />
       </div>
-      {/* <div className="h-[80%] flex flex-col justify-center items-center">
-        <div className="w-1/4 flex flex-col justify-center border rounded-xl px-4 py-8">
-          <p className="mb-2 flex">Please input your money</p>
-          <input
-            type="text"
-            className="w-full bg-emerald-800 border-green-400 border-2 p-2 rounded-2xl"
-          />
-          <input
-            type="text"
-            className="w-full mt-4 bg-emerald-800 border-green-400 border-2 p-2 rounded-2xl"
-          />
-        </div>
-        <button className="mt-4" onClick={() => donate("0.1")}>
-          Donate
-        </button>
-      </div> */}
     </div>
   );
 };
