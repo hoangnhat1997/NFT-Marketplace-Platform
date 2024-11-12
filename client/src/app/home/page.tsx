@@ -41,7 +41,7 @@ const Home = () => {
             src={
               "https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2021/10/image2-2.png"
             }
-            width={500}
+            width={700}
             height={500}
             alt="Picture"
           />

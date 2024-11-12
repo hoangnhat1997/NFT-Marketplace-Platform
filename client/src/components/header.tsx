@@ -45,8 +45,8 @@ const Header = () => {
     );
   }
   return (
-    <div className="px-40 py-8 bg-gray-100 flex justify-between items-center">
-      <div className="flex flex-row justify-between items-center text-black">
+    <div className="px-40 py-8 bg-gray-100 flex justify-center md:justify-between items-center">
+      <div className="hidden md:flex flex-row justify-between items-center text-black">
         <div className="flex flex-row justify-center items-center">
           <FontAwesomeIcon color="black" icon={faHouse} />
           <p className="mr-0 ml-4">Meta Market</p>
@@ -95,7 +95,7 @@ const Header = () => {
           <p className="ml-2 text-black font-weight-700">Alexander</p>
         </div>
         <button
-          className="ml-4 h-10 px-4 bg-blue-600 hover:bg-blue-400 rounded-3xl flex justify-center items-center"
+          className="ml-4 h-14 md:h-10 px-4 bg-blue-600 hover:bg-blue-400 rounded-3xl flex justify-center items-center"
           onClick={openModal}
         >
           Connect Wallet
