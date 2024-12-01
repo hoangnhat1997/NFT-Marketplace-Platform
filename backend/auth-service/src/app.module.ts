@@ -23,7 +23,7 @@ import config from './config';
         },
       },
       {
-        name: config().services.transaction.name,
+        name: config().services.image.name,
         transport: Transport.KAFKA,
         options: {
           client: {
