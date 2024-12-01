@@ -46,19 +46,14 @@ const Footer = () => {
         </p>
       </div>
 
-      <div className="flex flex-row items-center justify-center">
-        <div className="hover:bg-gray-400 bg-gray-200 rounded-3xl py-2 px-6 flex flex-row justify-center items-center cursor-pointer">
+      <div className="flex flex-row items-center justify-around mt-3">
+        <div className="hover:bg-gray-400 bg-gray-200 rounded-3xl py-2 px-6 mx-2 flex flex-row justify-center items-center cursor-pointer">
           <FontAwesomeIcon fontSize={10} color="black" icon={faAngleLeft} />
           <p className="ml-2 text-black font-medium">Prev Step</p>
         </div>
-        <div className="hover:bg-gray-400 bg-gray-200 rounded-3xl py-2 px-6 flex flex-row justify-center items-center cursor-pointer sm:mt-0 sm:ml-8">
-          <p className="text-black font-medium">Next Step</p>
-          <FontAwesomeIcon
-            // className="ml-2"
-            fontSize={10}
-            color="black"
-            icon={faAngleRight}
-          />
+        <div className="hover:bg-gray-400 bg-gray-200 rounded-3xl py-2 px-6 mx-2 flex flex-row justify-center items-center cursor-pointer sm:mt-0 sm:ml-8">
+          <p className="mr-2 text-black font-medium">Next Step</p>
+          <FontAwesomeIcon fontSize={10} color="black" icon={faAngleRight} />
         </div>
       </div>
     </div>

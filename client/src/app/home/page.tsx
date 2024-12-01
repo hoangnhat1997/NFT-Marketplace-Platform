@@ -36,7 +36,7 @@ const Home = () => {
             <p className="mt-2 text-gray-400">You can find over</p>
           </div>
         </div>
-        <div className=" md:w-1/2 flex ">
+        <div className=" md:w-1/2 flex flex-col md:flex-row ">
           <Image
             src={
               "https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2021/10/image2-2.png"
@@ -45,15 +45,37 @@ const Home = () => {
             height={500}
             alt="Picture"
           />
-          <div className="ml-4 flex flex-col justify-between">
-            <FontAwesomeIcon fontSize={20} color="black" icon={faAngleRight} />
+          <div className="mt-2 md:ml-4 flex flex-row md:flex-col justify-between">
+            <FontAwesomeIcon
+              className="hidden md:block"
+              fontSize={20}
+              color="black"
+              icon={faAngleRight}
+            />
+            <FontAwesomeIcon
+              className="md:hidden"
+              fontSize={20}
+              color="black"
+              icon={faAngleLeft}
+            />
             <div>
               <p className="font-bold">
                 <span className="text-gray-800">2 </span>
                 <span className="text-gray-200">OF 4</span>
               </p>
             </div>
-            <FontAwesomeIcon fontSize={20} color="black" icon={faAngleLeft} />
+            <FontAwesomeIcon
+              className="hidden md:block"
+              fontSize={20}
+              color="black"
+              icon={faAngleLeft}
+            />
+            <FontAwesomeIcon
+              className="md:hidden"
+              fontSize={20}
+              color="black"
+              icon={faAngleRight}
+            />
           </div>
         </div>
       </div>
