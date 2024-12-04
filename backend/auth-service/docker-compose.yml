@@ -3,7 +3,8 @@ version: '3.8'
 services:
   api:
     build:
-      context: ./backend/auth-service
+      context: .
+      dockerfile: Dockerfile
     container_name: api-container
     ports:
       - '3000:3000' # Expose the API on port 3000

@@ -1,13 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthModule } from './auth/auth.module';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import config from './config';
 
 @Module({
   imports: [
-    AuthModule,
     ClientsModule.register([
       {
         name: config().services.transaction.name,
