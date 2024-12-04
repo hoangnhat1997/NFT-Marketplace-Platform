@@ -5,13 +5,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: api-container
+    container_name: auth-service-api-container
     ports:
       - '3000:3000' # Expose the API on port 3000
     environment:
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5432
-      POSTGRES_DB: mydatabase
+      POSTGRES_DB: authservice
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
     depends_on:
@@ -23,7 +23,7 @@ services:
     ports:
       - '5432:5432' # Expose PostgreSQL on the default port
     environment:
-      POSTGRES_DB: mydatabase
+      POSTGRES_DB: authservice
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
     volumes:
