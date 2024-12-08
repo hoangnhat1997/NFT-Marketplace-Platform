@@ -1,0 +1,3 @@
+[submodule "transaction-service"]
+	path = transaction-service
+	url = https://github.com/hoangnhat1997/NFT-Marketplace-Platform.git
