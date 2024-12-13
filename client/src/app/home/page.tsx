@@ -4,21 +4,12 @@ import { ethers } from "ethers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 
-import {
-  faUserTie,
-  faWallet,
-  faHouse,
-  faMagnifyingGlass,
-  faAngleRight,
-  faAngleLeft,
-} from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import CategoryItem from "@/components/categoryItem";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
 
 const Home = () => {
   return (
-    <div className="h-max w-full flex flex-col bg-gray-100 px-4 md:px-20">
+    <div className="w-full flex flex-col bg-gray-100 px-4 md:px-20">
       <div className="flex flex-col md:flex-row items-center md:items-start mx-auto mt-10 md:mx-20">
         <div className="flex flex-col items-center md:items-start w-full md:w-1/2">
           <div className="mb-4 bg-gray-200 rounded-2xl text-center md:text-left">
@@ -36,13 +27,13 @@ const Home = () => {
             <p className="mt-2 text-gray-400">You can find over</p>
           </div>
         </div>
-        <div className=" md:w-1/2 flex flex-col md:flex-row ">
+        <div className=" md:w-1/2 h-1/2 flex flex-col md:flex-row ">
           <Image
             src={
               "https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2021/10/image2-2.png"
             }
-            width={700}
-            height={500}
+            width={900}
+            height={800}
             alt="Picture"
           />
           <div className="mt-2 md:ml-4 flex flex-row md:flex-col justify-between">
