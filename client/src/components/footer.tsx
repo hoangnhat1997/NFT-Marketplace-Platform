@@ -14,7 +14,7 @@ const Footer = () => {
   const router = useRouter();
 
   return (
-    <div className="px-6 sm:px-10 md:px-20 lg:px-40 py-8 bg-gray-100 flex flex-col md:flex-row justify-between items-center">
+    <div className="w-full max-w-screen-2xl mx-auto px-6 sm:px-10 md:px-20 lg:px-40 py-8 bg-gray-100 flex flex-col md:flex-row justify-between items-center">
       <div className="flex flex-col sm:flex-row items-center mb-4 md:mb-0">
         <p className="font-bold text-black text-center sm:text-left">
           Lets find what you need
