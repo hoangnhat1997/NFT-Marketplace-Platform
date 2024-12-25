@@ -79,7 +79,7 @@ const Header = () => {
           />
         </div>
         <div className="flex flex-row justify-center items-center">
-          <div className="flex flex-row bg-gray-200 hover:bg-blue-400 hover:text-blue-900  justify-center items-center px-2 rounded-2xl mr-4">
+          <div className="flex flex-row bg-gray-200  hover:bg-blue-400 hover:text-blue-900  justify-center items-center px-2 rounded-2xl mr-4">
             <FontAwesomeIcon color="black" icon={faWallet} />
             <button
               onClick={() => {}}
@@ -96,10 +96,10 @@ const Header = () => {
             <p className="ml-2 text-black font-weight-700">Alexander</p>
           </div>
           <button
-            className="ml-4 h-14 md:h-10 px-4 bg-blue-600 hover:bg-blue-400 rounded-3xl flex justify-center items-center"
+            className="md:ml-4 h-8 md:h-10 px-2 bg-blue-600 hover:bg-blue-400 rounded-3xl flex justify-center items-center"
             onClick={openModal}
           >
-            Connect Wallet
+            <div className="text-[12px]">Connect Wallet</div>
           </button>
           {isOpen && <ConnectModal closeModal={closeModal} />}
         </div>
