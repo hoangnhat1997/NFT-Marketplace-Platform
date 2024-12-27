@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: image-service-api-container
     ports:
-      - '3000:3000' # Expose the API on port 3000
+      - '3000:3000'
     environment:
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5432
@@ -21,13 +21,13 @@ services:
     image: postgres:15-alpine
     container_name: postgres-container
     ports:
-      - '5432:5432' # Expose PostgreSQL on the default port
+      - '5432:5432'
     environment:
       POSTGRES_DB: imageservice
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
     volumes:
-      - postgres_data:/var/lib/postgresql/data # Persist data
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
   postgres_data:
