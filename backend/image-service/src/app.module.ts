@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import config from './config';
+import { ImageModule } from './image/image.module';
 
 import { AppService } from './app.service';
 
@@ -35,6 +36,7 @@ import { AppService } from './app.service';
         },
       },
     ]),
+    ImageModule,
   ],
   controllers: [AppController],
   providers: [AppService],
