@@ -15,7 +15,7 @@ const Footer = () => {
 
   return (
     <div className="w-screen bg-gray-100">
-      <div className="w-full max-w-screen-2xl bg-white mx-auto px-6 sm:px-10 md:px-20 py-8 bg-gray-100 flex flex-col md:flex-row justify-between items-center">
+      <div className="w-full bg-white mx-auto px-6 sm:px-10 md:px-20 py-8 bg-gray-100 flex flex-col md:flex-row justify-between items-center">
         <div className="flex flex-col sm:flex-row items-center mb-4 md:mb-0">
           <p className="font-bold text-black text-center sm:text-left">
             Lets find what you need

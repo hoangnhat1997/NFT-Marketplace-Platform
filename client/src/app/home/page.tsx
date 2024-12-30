@@ -10,7 +10,7 @@ import CategoryItem from "@/components/categoryItem";
 const Home = () => {
   return (
     <div className="w-screen bg-gray-100">
-      <div className="w-full max-w-screen-2xl mx-auto flex flex-col bg-white px-4 md:px-20">
+      <div className="w-full  mx-auto flex flex-col bg-white px-4 md:px-20">
         <div className="flex flex-col md:flex-row items-center md:items-start mx-auto mt-10 md:mx-20">
           <div className="flex flex-col items-center md:items-start w-full md:w-1/2">
             <div className="mb-4 bg-gray-200 rounded-2xl text-center md:text-left">
@@ -19,13 +19,15 @@ const Home = () => {
             <p className="text-3xl md:text-5xl text-black font-bold text-center md:text-left">
               DISCOVER, COLLECT, AND SELL NFTS
             </p>
-            <div className="mt-10 h-[100px] w-full md:w-[400px] bg-white rounded-xl p-6">
-              <p className="font-bold">
+            <div className="my-6 h-[140px] w-full md:w-[400px] bg-gray-100 rounded-xl p-6">
+              <p className="font-bold text-xl md:text-3xl">
                 <span className="text-gray-500">0</span>
                 <span className="text-rose-400">65, 234, 1</span>
                 <span className="text-orange-500">99</span>
               </p>
-              <p className="mt-2 text-gray-400">You can find over</p>
+              <p className="mt-2 text-gray-400 text-xl md:text-3xl">
+                You can find over
+              </p>
             </div>
           </div>
           <div className="md:w-1/2 flex flex-col md:flex-row ">
@@ -72,10 +74,10 @@ const Home = () => {
           </div>
         </div>
         <div className="md:mx-20 mt-20 flex flex-col md:flex-row items-center md:items-start text-center md:text-left">
-          <p className="font-bold text-black text-2xl md:text-3xl">
+          <p className="font-bold text-black text-2xl  md:text-3xl">
             Categories
           </p>
-          <div className="hidden md:block w-1 mx-10 h-6 bg-gray-200 rounded-xl"></div>
+          <div className="hidden md:block w-1 mx-10 sm:h-6 bg-gray-200 rounded-xl"></div>
           <p className="font-medium text-gray-400 text-lg md:text-xl">
             Select your favourites
           </p>

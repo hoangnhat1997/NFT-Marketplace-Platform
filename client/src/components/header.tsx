@@ -46,7 +46,7 @@ const Header = () => {
   }
   return (
     <div className="w-screen bg-gray-100">
-      <div className="max-w-screen-2xl py-8 bg-white lg:px-40 flex justify-center md:justify-between items-center mx-auto w-auto">
+      <div className="w-full py-8 bg-white lg:px-40 flex justify-center md:justify-between items-center mx-auto w-auto">
         <div className="hidden md:flex flex-row justify-between items-center text-black">
           <div className="flex flex-row justify-center items-center">
             <FontAwesomeIcon color="black" icon={faHouse} />
