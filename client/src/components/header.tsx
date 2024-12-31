@@ -72,6 +72,10 @@ const Header = () => {
           >
             Categories
           </p>
+
+          <button className="mr-4 hover" onClick={() => router.push("create")}>
+            <FontAwesomeIcon fontSize={30} color="black" icon={faSquarePlus} />
+          </button>
           <div className="w-1 mx-4 h-6 bg-gray-200 rounded-xl"></div>
           <FontAwesomeIcon
             className="mx-4"
@@ -89,9 +93,7 @@ const Header = () => {
               Wallet
             </button>
           </div>
-          <button className="mr-4 hover" onClick={() => {}}>
-            <FontAwesomeIcon fontSize={30} color="black" icon={faSquarePlus} />
-          </button>
+
           <div className=" w-1 h-6 bg-gray-200 rounded-xl"></div>
           <div className="flex flex-row justify-center items-center px-2">
             <div className="h-12 w-12  flex justify-center items-center p-2">
