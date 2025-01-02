@@ -1,8 +1,44 @@
 "use client";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const Create = () => {
   const router = useRouter();
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event: any) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+
+    if (!selectedFile) {
+      alert("Please select a file to upload.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("File uploaded successfully:", data);
+        // Redirect or update the UI as required
+        router.push("/success");
+      } else {
+        console.error("File upload failed:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white text-black flex items-center justify-center">
@@ -13,9 +49,15 @@ const Create = () => {
           information.
         </p>
 
-        <div className="flex flex-col lg:flex-row gap-6">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col lg:flex-row gap-6"
+        >
           {/* Left Section */}
-          <div className="flex-1 mr-20 border-dashed border-2 border-gray-600 rounded-lg p-6 flex items-center justify-center flex-col text-center">
+          <label
+            htmlFor="file-upload"
+            className="flex-1 mr-20 border-dashed border-2 border-gray-600 rounded-lg p-6 flex items-center justify-center flex-col text-center cursor-pointer"
+          >
             <div className="text-gray-400 mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -32,17 +74,25 @@ const Create = () => {
                 />
               </svg>
             </div>
-            <p className="text-gray-400">Drag and drop media</p>
-            <p className="text-sm text-gray-600">
-              <a href="#" className="text-blue-500">
-                Browse files
-              </a>
-            </p>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="hidden"
+              id="file-upload"
+            />
+            <label
+              // htmlFor="file-upload"
+              className="text-gray-400 cursor-pointer"
+            >
+              Drag and drop media or{" "}
+              <span className="text-blue-500">Browse files</span>
+            </label>
             <p className="text-xs text-gray-600 mt-2">
               Max size: 50MB <br />
               JPG, PNG, GIF, SVG, MP4
             </p>
-          </div>
+          </label>
 
           {/* Right Section */}
           <div className="flex-1 ml-20">
@@ -54,7 +104,7 @@ const Create = () => {
               >
                 Collection *
               </label>
-              <button className="w-full p-4  rounded-lg border border-gray-700 text-gray-400 text-left">
+              <button className="w-full p-4 rounded-lg border border-gray-700 text-gray-400 text-left">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 inline-block mr-2"
@@ -103,7 +153,7 @@ const Create = () => {
               <input
                 type="number"
                 id="supply"
-                className="w-full p-3  rounded-lg border border-gray-700 text-white placeholder-gray-600"
+                className="w-full p-3 rounded-lg border border-gray-700 text-white placeholder-gray-600"
                 placeholder="1"
               />
             </div>
@@ -118,18 +168,21 @@ const Create = () => {
               </label>
               <textarea
                 id="description"
-                className="w-full p-3  rounded-lg border border-gray-700 text-white placeholder-gray-600"
+                className="w-full p-3 rounded-lg border border-gray-700 text-white placeholder-gray-600"
                 placeholder="Enter a description"
                 rows={4}
               ></textarea>
             </div>
 
             {/* Create Button */}
-            <button className="w-full p-4 bg-blue-600 rounded-lg text-white font-bold hover:bg-blue-700 transition">
+            <button
+              type="submit"
+              className="w-full p-4 bg-blue-600 rounded-lg text-white font-bold hover:bg-blue-700 transition"
+            >
               Create
             </button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
