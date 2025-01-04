@@ -31,7 +31,7 @@ const Create = () => {
         const data = await response.json();
         console.log("File uploaded successfully:", data);
         // Redirect or update the UI as required
-        router.push("/success");
+        router.push("/profile");
       } else {
         console.error("File upload failed:", response.statusText);
       }
