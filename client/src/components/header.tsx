@@ -95,12 +95,14 @@ const Header = () => {
           </div>
 
           <div className=" w-1 h-6 bg-gray-200 rounded-xl"></div>
-          <div className="flex flex-row justify-center items-center px-2">
-            <div className="h-12 w-12  flex justify-center items-center p-2">
-              <FontAwesomeIcon color="black" icon={faUserTie} />
+          <button onClick={() => router.push("/profile")}>
+            <div className="flex flex-row justify-center items-center px-2 cursor-pointer">
+              <div className="h-12 w-12  flex justify-center items-center p-2">
+                <FontAwesomeIcon color="black" icon={faUserTie} />
+              </div>
+              <p className="ml-2 text-black font-weight-700">Alexander</p>
             </div>
-            <p className="ml-2 text-black font-weight-700">Alexander</p>
-          </div>
+          </button>
           <button
             className="md:ml-4 h-8 md:h-10 px-2 bg-blue-600 hover:bg-blue-400 cursor-pointer rounded-3xl flex justify-center items-center"
             onClick={openModal}
