@@ -7,14 +7,14 @@ const Profile = () => {
       <div className="absolute top-0 w-full h-2/5 bg-gray-200 flex justify-center items-center">
         <Image
           src="https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2021/10/image2-2.png"
-          layout="fill" // This ensures the image fills the container
-          objectFit="cover" // Makes sure the image covers the container without stretching
+          layout="fill"
+          objectFit="cover"
           alt="cover"
         />
       </div>
-      <div className="absolute top-[250px] left-[10px] w-full flex">
-        <div className="w-1/3 flex flex-col justify-center items-center">
-          <div className="w-32 h-32 rounded-full bg-gray-200 flex justify-center items-center overflow-hidden">
+      <div className="absolute top-[270px] md:top-[200px] left-[30px] md:left-[70px] w-full flex">
+        <div className=" flex flex-col justify-center items-center">
+          <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-gray-200 flex justify-center items-center overflow-hidden">
             <Image
               src={
                 "https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2021/10/image2-2.png"
