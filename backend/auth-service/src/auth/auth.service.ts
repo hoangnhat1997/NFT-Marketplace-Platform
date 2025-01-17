@@ -9,7 +9,7 @@ export class AuthService {
     @Inject('KAFKA_SERVICE') private readonly kafkaClient: ClientKafka,
   ) {}
 
-  async registerUser(userData: any) {
+  async register(userData: any) {
     // Save user in DB
     const user = await this.prisma.user.create({ data: userData });
 
