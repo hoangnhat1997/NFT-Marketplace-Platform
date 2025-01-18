@@ -1,7 +1,7 @@
 import Home from "./home/page";
 
-function DonatePage() {
+function MarketPlacePage() {
   return <Home />;
 }
 
-export default DonatePage;
+export default MarketPlacePage;
