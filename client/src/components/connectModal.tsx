@@ -28,38 +28,6 @@ const ConnectModal = (props: ConnectModalProps) => {
     }
   }, [ethereum]);
 
-  const connectMetaMask = async (amount: any) => {
-    try {
-      if (typeof window.ethereum === "undefined") {
-        console.error("MetaMask is not installed");
-        return;
-      }
-
-      await window.ethereum.request({ method: "eth_requestAccounts" });
-
-      const web3Provider = new ethers.BrowserProvider(window.ethereum);
-
-      const signer = await web3Provider.getSigner();
-
-      const contract = new ethers.Contract(
-        process.env.CONTRACT_ADDRESS!,
-        CONTRACT_ABI,
-        signer
-      );
-
-      const transaction = await contract.donate({
-        value: utils.parseEther(amount),
-      });
-      await transaction.wait();
-      console.log("Transaction successful");
-    } catch (error) {
-      console.error(
-        "Error connecting to MetaMask or executing the transaction",
-        error
-      );
-    }
-  };
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -77,16 +45,71 @@ const ConnectModal = (props: ConnectModalProps) => {
     };
   }, [props, props.closeModal]);
 
-  const connectMetaMask1 = async () => {
-    if (!sdk) {
-      console.error("MetaMask SDK not initialized");
-      return;
-    }
+  const connectMetaMask = async (amount: any) => {
     try {
-      console.log("Attempting to connect to MetaMask...");
-      await sdk.connect();
-    } catch (err) {
-      console.error("Error connecting to MetaMask", err);
+      // if (typeof window.ethereum === "undefined") {
+      //   console.error("MetaMask is not installed");
+      //   return;
+      // }
+
+      // await window.ethereum.request({ method: "eth_requestAccounts" });
+
+      // const web3Provider = new ethers.BrowserProvider(window.ethereum);
+
+      // const signer = await web3Provider.getSigner();
+
+      // const contract = new ethers.Contract(
+      //   process.env.CONTRACT_ADDRESS!,
+      //   CONTRACT_ABI,
+      //   signer
+      // );
+
+      // const transaction = await contract.donate({
+      //   value: utils.parseEther(amount),
+      // });
+      // await transaction.wait();
+      let signer = null;
+
+      let provider;
+      if (window.ethereum == null) {
+        console.log("MetaMask not installed; using read-only defaults");
+        provider = ethers.getDefaultProvider();
+      } else {
+        provider = new ethers.BrowserProvider(window.ethereum);
+        signer = await provider.getSigner();
+
+        const loginAddress = await signer.getAddress();
+
+        loginBackend(loginAddress);
+        const balance = await provider.getBalance(loginAddress);
+
+        console.log("Balance:", balance.toString());
+
+        console.log("Connected to MetaMask with address:", loginAddress);
+      }
+
+      console.log("Transaction successful");
+    } catch (error) {
+      console.error(
+        "Error connecting to MetaMask or executing the transaction",
+        error
+      );
+    }
+  };
+
+  const loginBackend = async (address: string) => {
+    try {
+      const response = await fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ wallet_address: address }),
+      });
+      console.log(response);
+    } catch (error) {
+      console.error("Error logging in", error);
     }
   };
 

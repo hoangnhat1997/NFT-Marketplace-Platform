@@ -10,9 +10,9 @@ export class AuthService {
   ) {}
 
   async register(userData: any) {
-    // check if user with email already exists
+    // check if user with wallet address already exists
     const userExists = await this.prisma.user.findUnique({
-      where: { email: userData.email },
+      where: { walletAddress: userData.wallet_address },
     });
     if (userExists) {
       throw new Error('User with this email already exists');
