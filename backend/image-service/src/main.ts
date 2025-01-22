@@ -1,15 +1,22 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
-  // Enable CORS
-  app.enableCors({
-    origin: process.env.CLIENT_WEB_HOST, // Replace with your frontend origin
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    credentials: true,
+  app.connectMicroservice<MicroserviceOptions>({
+    transport: Transport.KAFKA,
+    options: {
+      client: {
+        brokers: ['localhost:9092'],
+      },
+      consumer: {
+        groupId: 'image-consumer',
+      },
+    },
   });
-  await app.listen(process.env.PORT ?? 3000);
+
+  await app.startAllMicroservices();
+  await app.listen(3002);
 }
 bootstrap();
