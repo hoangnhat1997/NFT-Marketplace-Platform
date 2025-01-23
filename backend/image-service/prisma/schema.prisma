@@ -20,5 +20,6 @@ model Image {
   userId    Int       // Foreign key to User in another database
   url       String
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
 }

@@ -12,6 +12,7 @@ import { Response, Express } from 'express';
 import { join } from 'path';
 
 import { ImageService } from './image.service';
+import { EventPattern } from '@nestjs/microservices';
 
 @Controller('image')
 export class ImageController {
@@ -25,5 +26,10 @@ export class ImageController {
   @Get(':imgpath')
   seeUploadedFile(@Param('imgpath') image, @Res() res: Response) {
     return res.sendFile(join(process.cwd(), 'uploads/' + image));
+  }
+
+  @EventPattern('transaction-processed')
+  async handleTransactionProcessed(data: Record<string, unknown>) {
+    await this.imageService.processImage(data['transactionId'] as string);
   }
 }

@@ -1,13 +1,11 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { ClientKafka } from '@nestjs/microservices';
+import { Injectable } from '@nestjs/common';
+import { KafkaService } from 'src/kafka/kafka.service';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { KafkaService } from './kafka.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     private prisma: PrismaService,
-    @Inject('KAFKA_SERVICE') private readonly kafkaClient: ClientKafka,
     private readonly kafkaService: KafkaService,
   ) {}
 
@@ -23,7 +21,7 @@ export class AuthService {
     const user = await this.prisma.user.create({ data: userData });
 
     // Emit user created event
-    this.kafkaClient.emit('user.created', { id: user.id, email: user.email });
+    this.kafkaService.emit('user.created', { id: user.id, email: user.email });
     return user;
   }
 

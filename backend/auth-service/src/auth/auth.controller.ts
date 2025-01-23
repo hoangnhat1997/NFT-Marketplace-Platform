@@ -16,8 +16,8 @@ export class AuthController {
   @EventPattern('transaction-created')
   async handleTransactionCreated(data: Record<string, unknown>) {
     await this.authService.verifyTransaction(
-      data['userId'],
-      data['transactionId'],
+      data['userId'] as string,
+      data['transactionId'] as string,
     );
   }
 }
