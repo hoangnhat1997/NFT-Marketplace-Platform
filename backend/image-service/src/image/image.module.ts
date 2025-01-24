@@ -5,9 +5,11 @@ import { MulterModule } from '@nestjs/platform-express';
 
 import { ImageController } from './image.controller';
 import { ImageService } from './image.service';
+import { KafkaModule } from 'src/kafka/kafka.module';
 
 @Module({
   imports: [
+    KafkaModule,
     MulterModule.register({
       storage: diskStorage({
         destination: './uploads',

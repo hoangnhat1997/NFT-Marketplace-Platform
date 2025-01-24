@@ -1,14 +1,13 @@
 FROM node:20 AS builder
 
+WORKDIR /app
 
-WORKDIR /usr/src/app
+COPY --chown=node:node package.json yarn.lock ./
 
-COPY package*.json ./
+RUN yarn install
 
-RUN npm install
-
-COPY . .
+COPY --chown=node:node . .
 
 RUN npx prisma generate
 
-CMD ["npm", "run", "start:dev"]
+CMD [ "yarn", "start" ]

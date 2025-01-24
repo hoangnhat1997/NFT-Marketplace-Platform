@@ -5,6 +5,7 @@ import config from './config';
 import { ImageModule } from './image/image.module';
 
 import { AppService } from './app.service';
+import { KafkaModule } from './kafka/kafka.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { AppService } from './app.service';
       },
     ]),
     ImageModule,
+    KafkaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
