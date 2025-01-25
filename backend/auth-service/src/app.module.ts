@@ -3,9 +3,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import config from './config';
+import { AuthModule } from './auth/auth.module';
+import { KafkaModule } from './kafka/kafka.module';
 
 @Module({
   imports: [
+    KafkaModule,
+    AuthModule,
     ClientsModule.register([
       {
         name: config().services.transaction.name,

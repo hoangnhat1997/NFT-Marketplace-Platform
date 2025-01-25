@@ -9,6 +9,8 @@ import { KafkaModule } from './kafka/kafka.module';
 
 @Module({
   imports: [
+    KafkaModule,
+    ImageModule,
     ClientsModule.register([
       {
         name: config().services.transaction.name,
