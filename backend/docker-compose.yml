@@ -6,7 +6,7 @@ services:
     ports:
       - "2181:2181"
     environment:
-      - ALLOW_ANONYMOUS_LOGIN=yes
+      ALLOW_ANONYMOUS_LOGIN: "yes"
 
   kafka:
     image: bitnami/kafka:latest
@@ -19,6 +19,12 @@ services:
       ALLOW_PLAINTEXT_LISTENER: "yes"
     depends_on:
       - zookeeper
+    healthcheck:
+      test:
+        ["CMD", "kafka-topics.sh", "--zookeeper", "zookeeper:2181", "--list"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   auth-db:
     image: postgres:latest
