@@ -14,8 +14,11 @@ export class AuthService {
     const userExists = await this.prisma.user.findUnique({
       where: { walletAddress: userData.wallet_address },
     });
+
     if (userExists) {
-      throw new Error('User with this email already exists');
+      return await this.prisma.user.findUnique({
+        where: { walletAddress: userData.wallet_address },
+      });
     }
     // Save user in DB
     const user = await this.prisma.user.create({ data: userData });
