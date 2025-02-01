@@ -11,6 +11,7 @@ export class KafkaService implements OnModuleInit, OnModuleDestroy {
   constructor(@Inject('KAFKA_SERVICE') private readonly client: ClientKafka) {}
 
   async onModuleInit() {
+    this.client.subscribeToResponseOf(' initial topic');
     await this.client.connect();
   }
   async onModuleDestroy() {
