@@ -17,10 +17,16 @@ import { EventPattern } from '@nestjs/microservices';
 @Controller('image')
 export class ImageController {
   constructor(private readonly imageService: ImageService) {}
-  @Post('upload')
+  @Post('upload-image')
   @UseInterceptors(FileInterceptor('file'))
   uploadImage(@UploadedFile() file: Express.Multer.File) {
     return { filename: file.filename };
+  }
+
+  @Post('post-nft')
+  async postNFT(@Res() res: Response) {
+    await this.imageService.postNFT();
+    return res.status(200).send('NFT posted');
   }
 
   @Get(':imgpath')
