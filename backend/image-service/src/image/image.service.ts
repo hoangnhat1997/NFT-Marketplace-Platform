@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { KafkaService } from 'src/kafka/kafka.service';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { PostNFTDto } from './dto/post-nft.dto';
 
 @Injectable()
 export class ImageService {
@@ -14,9 +15,13 @@ export class ImageService {
     this.kafkaService.emit('image-processed', { transactionId });
   }
 
-  async postNFT() {
+  async postNFT(body: PostNFTDto) {
     // Post NFT logic
-    const result = await this.prisma.NFT.create({ data: { title: 'NFT' } });
+    const result = await this.prisma.NFT.create({
+      name: body.nameNFT,
+      userId: body.userId,
+      url: body.url,
+    });
     this.kafkaService.emit('nft-posted', { nftId: '123' });
 
     return result;

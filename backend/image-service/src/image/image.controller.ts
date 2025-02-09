@@ -6,6 +6,7 @@ import {
   Get,
   Param,
   Res,
+  Body,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Response, Express } from 'express';
@@ -13,6 +14,7 @@ import { join } from 'path';
 
 import { ImageService } from './image.service';
 import { EventPattern } from '@nestjs/microservices';
+import { PostNFTDto } from './dto/post-nft.dto';
 
 @Controller('image')
 export class ImageController {
@@ -23,9 +25,9 @@ export class ImageController {
     return { filename: file.filename };
   }
 
-  @Post('post-nft')
-  async postNFT(@Res() res: Response) {
-    await this.imageService.postNFT();
+  @Post('/post-nft')
+  async postNFT(@Body() body: PostNFTDto, @Res() res: Response) {
+    await this.imageService.postNFT(body);
     return res.status(200).send('NFT posted');
   }
 
