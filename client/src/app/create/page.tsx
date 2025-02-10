@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Create = () => {
   const router = useRouter();
@@ -54,45 +55,49 @@ const Create = () => {
           className="flex flex-col lg:flex-row gap-6"
         >
           {/* Left Section */}
-          <label
-            htmlFor="file-upload"
-            className="flex-1 mr-20 border-dashed border-2 border-gray-600 rounded-lg p-6 flex items-center justify-center flex-col text-center cursor-pointer"
-          >
-            <div className="text-gray-400 mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-12 w-12 mx-auto"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M4 12l8-8m0 0l8 8m-8-8v16"
-                />
-              </svg>
-            </div>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleFileChange}
-              className="hidden"
-              id="file-upload"
-            />
+          {selectedFile !== null ? (
+            <Image src={selectedFile} width={1200} height={800} alt="Picture" />
+          ) : (
             <label
-              // htmlFor="file-upload"
-              className="text-gray-400 cursor-pointer"
+              htmlFor="file-upload"
+              className="flex-1 mr-20 border-dashed border-2 border-gray-600 rounded-lg p-6 flex items-center justify-center flex-col text-center cursor-pointer"
             >
-              Drag and drop media or{" "}
-              <span className="text-blue-500">Browse files</span>
+              <div className="text-gray-400 mb-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-12 w-12 mx-auto"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M4 12l8-8m0 0l8 8m-8-8v16"
+                  />
+                </svg>
+              </div>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="hidden"
+                id="file-upload"
+              />
+              <label
+                // htmlFor="file-upload"
+                className="text-gray-400 cursor-pointer"
+              >
+                Drag and drop media or{" "}
+                <span className="text-blue-500">Browse files</span>
+              </label>
+              <p className="text-xs text-gray-600 mt-2">
+                Max size: 50MB <br />
+                JPG, PNG, GIF, SVG, MP4
+              </p>
             </label>
-            <p className="text-xs text-gray-600 mt-2">
-              Max size: 50MB <br />
-              JPG, PNG, GIF, SVG, MP4
-            </p>
-          </label>
+          )}
 
           {/* Right Section */}
           <div className="flex-1 ml-20">
