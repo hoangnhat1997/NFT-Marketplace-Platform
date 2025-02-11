@@ -6,9 +6,15 @@ import Image from "next/image";
 const Create = () => {
   const router = useRouter();
   const [selectedFile, setSelectedFile] = useState(null);
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
 
   const handleFileChange = (event: any) => {
-    setSelectedFile(event.target.files[0]);
+    const file = event.target.files[0];
+    setSelectedFile(file);
+    if (file) {
+      const src = URL.createObjectURL(file);
+      setImageSrc(src);
+    }
   };
 
   const handleSubmit = async (event: any) => {
@@ -55,8 +61,8 @@ const Create = () => {
           className="flex flex-col lg:flex-row gap-6"
         >
           {/* Left Section */}
-          {selectedFile !== null ? (
-            <Image src={selectedFile} width={1200} height={800} alt="Picture" />
+          {imageSrc !== null ? (
+            <Image src={imageSrc} width={600} height={600} alt="Picture" />
           ) : (
             <label
               htmlFor="file-upload"
