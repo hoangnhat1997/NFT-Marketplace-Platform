@@ -27,6 +27,7 @@ const Create = () => {
 
     const formData = new FormData();
     formData.append("file", selectedFile);
+    formData.append("name", event.target.name.value);
 
     try {
       const response = await fetch("http://localhost:3000/image/upload", {
@@ -115,7 +116,10 @@ const Create = () => {
               >
                 Collection *
               </label>
-              <button className="w-full p-4 rounded-lg border border-gray-700 text-gray-400 text-left">
+              <button
+                onClick={() => router.push("collections")}
+                className="w-full p-4 rounded-lg border border-gray-700 text-gray-400 text-left"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 inline-block mr-2"
