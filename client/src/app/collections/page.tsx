@@ -34,27 +34,39 @@ export default function Collections() {
         <label className="text-black text-md mb-2 ">Logo image *</label>
         <label
           htmlFor="file-upload-collection"
-          className="p-6 border border-gray-300 rounded-xl grid grid-cols-3 cursor-pointer"
+          className="p-6 border border-gray-300 rounded-xl flex flex-row cursor-pointer "
         >
-          <div className="col-span-1 flex items-center justify-center border-dashed border border-gray-600 rounded-lg mx-12">
-            <div className="text-gray-400">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 mx-auto"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M4 12l8-8m0 0l8 8m-8-8v16"
-                />
-              </svg>
+          {imageSrc !== null ? (
+            <div className="rounded-lg overflow-hidden flex items-center justify-center w-[80px] h-[80px] mx-12 aspect-w-1 aspect-h-1">
+              <Image
+                src={imageSrc}
+                width={80}
+                height={80}
+                className="rounded-lg object-cover"
+                alt="Picture"
+              />
             </div>
-          </div>
-          <div className="col-span-2 flex flex-col text-gray-400">
+          ) : (
+            <div className=" flex items-center justify-center border-dashed border border-gray-600 rounded-lg mx-12">
+              <div className="text-gray-400 w-[80px] h-[80px] flex items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 mx-auto"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M4 12l8-8m0 0l8 8m-8-8v16"
+                  />
+                </svg>
+              </div>
+            </div>
+          )}
+          <div className="flex flex-col text-gray-400">
             <p className="text-black font-bold text-xs">
               Drag and drop or click to upload
             </p>

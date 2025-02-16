@@ -63,7 +63,9 @@ const Create = () => {
         >
           {/* Left Section */}
           {imageSrc !== null ? (
-            <Image src={imageSrc} width={600} height={600} alt="Picture" />
+            <div className="rounded-lg overflow-hidden">
+              <Image src={imageSrc} width={600} height={600} alt="Picture" />
+            </div>
           ) : (
             <label
               htmlFor="file-upload"
