@@ -5,36 +5,44 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 
 const Profile = () => {
-  const [file, setFile] = useState<string | null>(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [imageSrc, setImageSrc] = useState<string>(
+    "https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2021/10/image2-2.png"
+  );
 
   const handleFileChange = (e: any) => {
-    const selectedFile = e.target.files[0];
-    setFile(URL.createObjectURL(selectedFile));
+    const file = e.target.files[0];
+    setSelectedFile(file);
 
-    const reader = new FileReader();
-
-    handleSubmit(e);
-
-    reader.onloadend = () => {
-      if (typeof reader.result === "string") {
-        setFile(reader.result);
-      }
-    };
-
-    if (selectedFile) {
-      reader.readAsDataURL(selectedFile);
+    if (file) {
+      const src = URL.createObjectURL(file);
+      setImageSrc(src);
     }
+
+    // const reader = new FileReader();
+
+    // handleSubmit(e);
+
+    // reader.onloadend = () => {
+    //   if (typeof reader.result === "string") {
+    //     setSelectedFile(reader.result);
+    //   }
+    // };
+
+    // if (selectedFile) {
+    //   reader.readAsDataURL(selectedFile);
+    // }
   };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    if (!file) {
+    if (!selectedFile) {
       alert("Please select a file to upload.");
       return;
     }
 
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append("file", selectedFile);
 
     try {
       const response = await fetch("http://localhost:3000/api/upload", {
@@ -56,12 +64,7 @@ const Profile = () => {
   return (
     <div className="w-screen h-screen relative bg-gray-100">
       <div className="relative top-0 w-full h-2/5 bg-gray-200 flex justify-center items-center">
-        <Image
-          src="https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2021/10/image2-2.png"
-          layout="fill"
-          objectFit="cover"
-          alt="cover"
-        />
+        <Image src={imageSrc} layout="fill" objectFit="cover" alt="cover" />
         <div
           className="absolute right-[50px] bottom-[20px] cursor-pointer bg-white rounded-md justify-center items-center flex p-2 z-10"
           onClick={() => document.getElementById("fileInput")?.click()}

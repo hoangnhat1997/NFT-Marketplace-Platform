@@ -37,14 +37,15 @@ export default function Collections() {
           className="p-6 border border-gray-300 rounded-xl flex flex-row cursor-pointer "
         >
           {imageSrc !== null ? (
-            <div className="rounded-lg overflow-hidden flex items-center justify-center w-[80px] h-[80px] mx-12 aspect-w-1 aspect-h-1">
-              <Image
-                src={imageSrc}
-                width={80}
-                height={80}
-                className="rounded-lg object-cover"
-                alt="Picture"
-              />
+            <div className="rounded-lg overflow-hidden flex items-center justify-center w-[80px] h-[80px] mx-12">
+              <div className="relative w-full h-full">
+                <Image
+                  src={imageSrc}
+                  layout="fill"
+                  className="rounded-lg object-cover"
+                  alt="Picture"
+                />
+              </div>
             </div>
           ) : (
             <div className=" flex items-center justify-center border-dashed border border-gray-600 rounded-lg mx-12">
@@ -94,9 +95,12 @@ export default function Collections() {
             >
               Contract Name *
             </label>
-            <button className="w-full p-4 rounded-lg border border-gray-700 text-gray-400 text-left">
-              My Collection Name
-            </button>
+            <input
+              type="text"
+              id="name"
+              className="w-full p-3 rounded-lg border border-gray-700 text-black placeholder-gray-600"
+              placeholder="My Collection Name"
+            />
           </div>
 
           <div className="col-span-1">
@@ -106,9 +110,12 @@ export default function Collections() {
             >
               Token symbol *
             </label>
-            <button className="w-full p-4 rounded-lg border border-gray-700 text-gray-400 text-left">
-              Create a new collection
-            </button>
+            <input
+              type="text"
+              id="name"
+              className="w-full p-3 rounded-lg border border-gray-700 text-black placeholder-gray-600"
+              placeholder="Create a new collection"
+            />
           </div>
         </div>
 

@@ -154,7 +154,7 @@ const Create = () => {
               <input
                 type="text"
                 id="name"
-                className="w-full p-3 rounded-lg border border-gray-700 text-white placeholder-gray-600"
+                className="w-full p-3 rounded-lg border border-gray-700 text-black placeholder-gray-600"
                 placeholder="Name your NFT"
               />
             </div>
@@ -170,7 +170,7 @@ const Create = () => {
               <input
                 type="number"
                 id="supply"
-                className="w-full p-3 rounded-lg border border-gray-700 text-white placeholder-gray-600"
+                className="w-full p-3 rounded-lg border border-gray-700 text-black placeholder-gray-600"
                 placeholder="1"
               />
             </div>
@@ -185,7 +185,7 @@ const Create = () => {
               </label>
               <textarea
                 id="description"
-                className="w-full p-3 rounded-lg border border-gray-700 text-white placeholder-gray-600"
+                className="w-full p-3 rounded-lg border border-gray-700 text-black placeholder-gray-600"
                 placeholder="Enter a description"
                 rows={4}
               ></textarea>
