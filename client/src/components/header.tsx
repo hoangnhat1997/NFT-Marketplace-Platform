@@ -49,7 +49,10 @@ const Header = () => {
     <div className="w-screen bg-gray-100">
       <div className="w-full py-8 bg-white lg:px-40 flex justify-center md:justify-between items-center mx-auto w-auto">
         <div className="hidden md:flex flex-row justify-between items-center text-black">
-          <div className="flex flex-row justify-center items-center">
+          <div
+            className="flex flex-row justify-center items-center cursor-pointer"
+            onClick={() => router.push("home")}
+          >
             <FontAwesomeIcon color="black" icon={faHouse} />
             <p className="mr-0 ml-4">Meta Market</p>
           </div>
