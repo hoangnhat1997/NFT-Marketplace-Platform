@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Flatform = () => {
   return (
-    <div className="h-max w-screen flex flex-col items-center justify-center bg-gray-100">
+    <div className="h-max w-screen flex flex-col items-center justify-center bg-gray-100 py-8">
       <div className="flex justify-center items-center">
         <p className="text-3xl font-bold">
           <span className="text-black">PICK YOUR </span>
