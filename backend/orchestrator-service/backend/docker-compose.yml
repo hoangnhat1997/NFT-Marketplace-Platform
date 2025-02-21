@@ -1,0 +1,115 @@
+version: "3.9"
+
+services:
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    ports:
+      - "2181:2181"
+    environment:
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+
+  kafka:
+    image: bitnami/kafka:latest
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_CFG_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_CFG_LISTENERS: PLAINTEXT://:9092
+      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      ALLOW_PLAINTEXT_LISTENER: "yes"
+    depends_on:
+      - zookeeper
+    healthcheck:
+      test:
+        ["CMD", "kafka-topics.sh", "--zookeeper", "zookeeper:2181", "--list"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  auth-db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: auth_user
+      POSTGRES_PASSWORD: auth_pass
+      POSTGRES_DB: auth_db
+    ports:
+      - "5432:5432"
+
+  transaction-db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: transaction_user
+      POSTGRES_PASSWORD: transaction_pass
+      POSTGRES_DB: transaction_db
+    ports:
+      - "5433:5432"
+
+  image-db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: image_user
+      POSTGRES_PASSWORD: image_pass
+      POSTGRES_DB: image_db
+    ports:
+      - "5434:5432"
+
+  orchestrator-db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: orchestrator_user
+      POSTGRES_PASSWORD: orchestrator_pass
+      POSTGRES_DB: orchestrator_db
+    ports:
+      - "5435:5432"
+
+  auth-service:
+    build:
+      context: ./auth-service
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgres://auth_user:auth_pass@auth-db:5432/auth_db
+      KAFKA_BROKER: kafka:9092
+    depends_on:
+      - auth-db
+      - kafka
+    ports:
+      - "3000:3000"
+
+  transaction-service:
+    build:
+      context: ./transaction-service
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgres://transaction_user:transaction_pass@transaction-db:5432/transaction_db
+      KAFKA_BROKER: kafka:9092
+    depends_on:
+      - transaction-db
+      - kafka
+    ports:
+      - "3001:3001"
+
+  image-service:
+    build:
+      context: ./image-service
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgres://image_user:image_pass@image-db:5432/image_db
+      KAFKA_BROKER: kafka:9092
+    depends_on:
+      - image-db
+      - kafka
+    ports:
+      - "3002:3002"
+
+  orchestrator-service:
+    build:
+      context: ./orchestrator-service
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgres://orchestrator_user:orchestrator_pass@orchestrator-db:5432/orchestrator_db
+      KAFKA_BROKER: kafka:9092
+    depends_on:
+      - orchestrator-db
+      - kafka
+    ports:
+      - "3003:3003"
