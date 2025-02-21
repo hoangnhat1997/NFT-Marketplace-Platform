@@ -39,8 +39,6 @@ import { KafkaModule } from './kafka/kafka.module';
         },
       },
     ]),
-    ImageModule,
-    KafkaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
