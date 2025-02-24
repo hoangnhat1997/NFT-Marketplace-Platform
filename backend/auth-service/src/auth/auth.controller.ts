@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { EventPattern } from '@nestjs/microservices';
+// import { EventPattern } from '@nestjs/microservices';
 
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
@@ -13,11 +13,11 @@ export class AuthController {
     return this.authService.login(loginDto);
   }
 
-  @EventPattern('transaction-created')
-  async handleTransactionCreated(data: Record<string, unknown>) {
-    await this.authService.verifyTransaction(
-      data['userId'] as string,
-      data['transactionId'] as string,
-    );
-  }
+  // @EventPattern('transaction-created')
+  // async handleTransactionCreated(data: Record<string, unknown>) {
+  //   await this.authService.verifyTransaction(
+  //     data['userId'] as string,
+  //     data['transactionId'] as string,
+  //   );
+  // }
 }

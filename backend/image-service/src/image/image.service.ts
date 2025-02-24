@@ -17,7 +17,7 @@ export class ImageService {
 
   async postNFT(body: PostNFTDto) {
     // Post NFT logic
-    const result = await this.prisma.NFT.create({
+    const result = await this.prisma.nFT.create({
       name: body.nameNFT,
       userId: body.userId,
       url: body.url,

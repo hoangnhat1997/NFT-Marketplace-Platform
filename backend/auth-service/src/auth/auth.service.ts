@@ -11,6 +11,7 @@ export class AuthService {
 
   async login(userData: any) {
     // check if user with wallet address already exists
+
     const userExists = await this.prisma.user.findUnique({
       where: { walletAddress: userData.wallet_address },
     });
@@ -21,10 +22,14 @@ export class AuthService {
       });
     }
     // Save user in DB
-    const user = await this.prisma.user.create({ data: userData });
+    const user = await this.prisma.user.create({
+      data: {
+        walletAddress: userData.wallet_address,
+      },
+    });
 
     // Emit user created event
-    this.kafkaService.emit('user.created', { id: user.id, email: user.email });
+    this.kafkaService.emit('user.created', { id: user.id });
     return user;
   }
 
